@@ -15,7 +15,11 @@
         </v-btn>
       </div>
       <div class="flex flex-col gap-3">
-        <div v-for="value in item.values" class="flex gap-5 items-center">
+        <div
+          v-for="value in item.values"
+          :key="value.name"
+          class="flex gap-5 items-center"
+        >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
         </div>
@@ -38,7 +42,11 @@
         </v-btn>
       </div>
       <div class="flex flex-col gap-3">
-        <div v-for="value in item.values" class="flex gap-5 items-center">
+        <div
+          v-for="(value, idx) in item.values"
+          :key="value + idx"
+          class="flex gap-5 items-center"
+        >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
         </div>
@@ -50,8 +58,6 @@
 import { reactive, ref } from "vue";
 
 const overlay = ref(false);
-const length = ref(3);
-const onboarding = ref(0);
 
 const data = reactive([
   {
