@@ -19,7 +19,11 @@
         </v-btn>
       </div>
       <div class="flex flex-col gap-3">
-        <div v-for="value in item.values" class="flex gap-5 items-center">
+        <div
+          v-for="value in item.values"
+          :key="value.name"
+          class="flex gap-5 items-center"
+        >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
         </div>
@@ -35,7 +39,12 @@
         </div>
       </div>
       <div class="flex flex-col gap-3">
-        <div v-for="value in dataPopup.values" class="flex gap-5 items-center">
+
+        <div
+          v-for="(value, idx) in item.values"
+          :key="value + idx"
+          class="flex gap-5 items-center"
+        >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
         </div>
