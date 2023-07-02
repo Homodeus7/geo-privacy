@@ -10,7 +10,11 @@
           <img :src="item.img" alt="logo" />
           <p class="font-medium text-xl">{{ item.name }}</p>
         </div>
-        <v-btn class="text-none" variant="tonal" @click="onOpen(item.id)">
+        <v-btn
+          class="text-none text-white"
+          color="#2D2E33"
+          @click="onOpen(item.id), (overlay = !overlay)"
+        >
           Полная информация
         </v-btn>
       </div>
@@ -27,21 +31,15 @@
     </div>
   </div>
   <v-overlay v-model="overlay" class="flex items-center justify-center">
-    <div
-      v-for="item in data"
-      :key="item.id"
-      class="p-10 bg-[--black-middle] flex gap-8"
-    >
-      <div class="flex flex-col justify-between">
-        <div class="flex flex-col gap-5 items-center">
-          <img :src="item.img" alt="logo" />
-          <p class="font-medium text-xl">{{ item.name }}</p>
+    <div class="p-10 bg-[--black-middle] flex gap-8 max-w-[786px]">
+      <div class="flex items-center min-w-[200px]">
+        <div class="flex flex-col gap-5 items-center text-center">
+          <img :src="dataPopup.img" alt="logo" />
+          <p class="font-medium text-xl">{{ dataPopup.name }}</p>
         </div>
-        <v-btn class="text-none" variant="tonal" @click="onOpen(item.id)">
-          Полная информация
-        </v-btn>
       </div>
       <div class="flex flex-col gap-3">
+
         <div
           v-for="(value, idx) in item.values"
           :key="value + idx"
@@ -49,6 +47,10 @@
         >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
+        </div>
+        <div v-for="value in dataPopup.desc" class="flex gap-5 items-start">
+          <div class="text-[--grey]">{{ value.name }}</div>
+          <div class="font-normal">{{ value.value }}</div>
         </div>
       </div>
     </div>
@@ -59,11 +61,13 @@ import { reactive, ref } from "vue";
 
 const overlay = ref(false);
 
+let dataPopup = reactive([]);
+
 const data = reactive([
   {
     id: 0,
     name: "SSL информация",
-    img: "@/assets/img/icon-lock.svg",
+    img: "/img/icon-lock.svg",
     values: [
       { name: "Тип сертификата", result: "DV" },
       { name: "Действителен до", result: "28.12.26" },
@@ -79,11 +83,10 @@ const data = reactive([
       },
     ],
   },
-
   {
     id: 1,
     name: "Технологии домена",
-    img: "@/assets/img/icon-lock.svg",
+    img: "/img/icon-technology.svg",
     values: [
       { name: "Веб-сервер", result: "Apache" },
       { name: "ЯП", result: "PHP 7.2 JavaScript" },
@@ -102,7 +105,7 @@ const data = reactive([
   {
     id: 2,
     name: "Хостинг",
-    img: "@/assets/img/icon-hosting.svg",
+    img: "/img/icon-hosting.svg",
     values: [
       { name: "Хостинг провайдер", result: "MegaHoster" },
       { name: "Расположение сервера", result: "Москва" },
@@ -121,7 +124,7 @@ const data = reactive([
   {
     id: 3,
     name: "Geo IP информация",
-    img: "@/assets/img/icon-hosting.svg",
+    img: "/img/icon-globe.svg",
     values: [
       { name: "Страна размещения", result: "Россия" },
       { name: "Регион", result: "Москва" },
@@ -139,7 +142,5 @@ const data = reactive([
   },
 ]);
 
-const onOpen = (id) => {
-  return data.filter((item) => item.id === id)[0];
-};
+const onOpen = (id) => (dataPopup = data.filter((item) => item.id === id)[0]);
 </script>
