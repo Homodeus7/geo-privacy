@@ -37,8 +37,8 @@ import { RouterLink } from "vue-router";
 import { reactive } from "vue";
 
 const links = reactive([
-  { link: "/login", name: "Позицианирование проекта" },
+  { link: "/", name: "Позицианирование проекта" },
   { link: "/", name: "Профили доменов" },
-  { link: "/shop", name: "Обзор локации" },
+  { link: "/", name: "Обзор локации" },
 ]);
 </script>

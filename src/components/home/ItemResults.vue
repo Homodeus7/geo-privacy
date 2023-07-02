@@ -11,8 +11,8 @@
           <p class="font-medium text-xl">{{ item.name }}</p>
         </div>
         <v-btn
-          class="text-none"
-          variant="tonal"
+          class="text-none text-white"
+          color="#2D2E33"
           @click="onOpen(item.id), (overlay = !overlay)"
         >
           Полная информация
@@ -51,8 +51,6 @@
 import { reactive, ref } from "vue";
 
 const overlay = ref(false);
-const length = ref(3);
-const onboarding = ref(0);
 
 let dataPopup = reactive([]);
 
@@ -60,7 +58,7 @@ const data = reactive([
   {
     id: 0,
     name: "SSL информация",
-    img: "./public/img/icon-lock.svg",
+    img: "/img/icon-lock.svg",
     values: [
       { name: "Тип сертификата", result: "DV" },
       { name: "Действителен до", result: "28.12.26" },
@@ -79,7 +77,7 @@ const data = reactive([
   {
     id: 1,
     name: "Технологии домена",
-    img: "./public/img/icon-technology.svg",
+    img: "/img/icon-technology.svg",
     values: [
       { name: "Веб-сервер", result: "Apache" },
       { name: "ЯП", result: "PHP 7.2 JavaScript" },
@@ -98,7 +96,7 @@ const data = reactive([
   {
     id: 2,
     name: "Хостинг",
-    img: "./public/img/icon-hosting.svg",
+    img: "/img/icon-hosting.svg",
     values: [
       { name: "Хостинг провайдер", result: "MegaHoster" },
       { name: "Расположение сервера", result: "Москва" },
@@ -117,7 +115,7 @@ const data = reactive([
   {
     id: 3,
     name: "Geo IP информация",
-    img: "./public/img/icon-globe.svg",
+    img: "/img/icon-globe.svg",
     values: [
       { name: "Страна размещения", result: "Россия" },
       { name: "Регион", result: "Москва" },
