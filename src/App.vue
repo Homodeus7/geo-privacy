@@ -1,6 +1,6 @@
 <template>
   <HeaderView />
-  <div class="wrapper h-[100%] flex flex-col gap-10 py-14">
+  <div class="wrapper min-h-[100%] flex flex-col gap-10 py-14">
     <RouterView />
   </div>
   <FooterView />

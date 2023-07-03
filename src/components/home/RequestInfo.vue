@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col gap-7 max-w-[440px] p-5 bg-[--black-middle] rounded-md border-[1px] border-[#2D2E33]"
+    class="flex flex-col gap-7 min-w-[440px] p-5 bg-[--black-middle] rounded-md border-[1px] border-[#2D2E33]"
   >
     <div
       class="p-4 bg-[--black-middle] rounded-sm border-[1px] border-[#2D2E33]"
@@ -33,6 +33,7 @@
 
 <script setup>
 import RequestItems from "./RequestItems.vue";
+
 import { ref } from "vue";
 
 const active = ref(false);
