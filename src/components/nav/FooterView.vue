@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <footer>
     <nav class="bg-[#1E1F23]">
       <div class="wrapper h-[60px] flex items-center justify-center">
         <router-link to="/">
@@ -10,7 +10,7 @@
         </router-link>
       </div>
     </nav>
-  </header>
+  </footer>
 </template>
 
 <script setup>
