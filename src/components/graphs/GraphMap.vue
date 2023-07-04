@@ -1,5 +1,5 @@
 <template>
-  <VueFlow v-model="elements" style="height: 400px" />
+  <VueFlow v-model="elements" style="height: 400px" class="vue-flow" />
 </template>
 
 <script setup>
@@ -37,4 +37,9 @@ onMounted(() => {
 
 <style lang="scss">
 @import "@vue-flow/core/dist/style.css";
+
+.vue-flow {
+  background-color: #1e1f23;
+  border-radius: 8px;
+}
 </style>
