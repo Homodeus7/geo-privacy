@@ -1,6 +1,8 @@
 <template>
   <HeaderView />
-  <div class="wrapper min-h-[100%] flex flex-col gap-10 py-14">
+  <div
+    class="2xl:max-w-[1380px] max-w-[1280px] mx-auto min-h-[100%] flex flex-col gap-10 py-14"
+  >
     <RouterView />
   </div>
   <FooterView />
@@ -19,12 +21,12 @@ import FooterView from "@/components/nav/FooterView.vue";
   --moz-osx-font-smoothing: grayscale;
 }
 
-.wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
-  transition: 0.2s;
-  @media (min-width: 1536px) {
-    max-width: 1380px;
-  }
-}
+// .wrapper {
+//   max-width: 1280px;
+//   margin: 0 auto;
+//   transition: 0.2s;
+//   @media (min-width: 1536px) {
+//     max-width: 1380px;
+//   }
+// }
 </style>
