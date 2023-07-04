@@ -13,7 +13,7 @@
         <v-btn
           class="text-none text-white"
           color="#2D2E33"
-          @click="onOpen(item.id), (overlay = !overlay)"
+          @click="onOpen(item.id)"
         >
           Полная информация
         </v-btn>
@@ -39,10 +39,9 @@
         </div>
       </div>
       <div class="flex flex-col gap-3">
-
         <div
-          v-for="(value, idx) in item.values"
-          :key="value + idx"
+          v-for="(value, idx) in dataPopup.values"
+          :key="value.name + idx"
           class="flex gap-5 items-center"
         >
           <div class="text-[--grey]">{{ value.name }}</div>
@@ -56,12 +55,13 @@
     </div>
   </v-overlay>
 </template>
+
 <script setup>
 import { reactive, ref } from "vue";
 
 const overlay = ref(false);
 
-let dataPopup = reactive([]);
+let dataPopup = reactive({});
 
 const data = reactive([
   {
@@ -142,5 +142,8 @@ const data = reactive([
   },
 ]);
 
-const onOpen = (id) => (dataPopup = data.filter((item) => item.id === id)[0]);
+const onOpen = (id) => {
+  dataPopup = data.filter((item) => item.id === id)[0];
+  overlay.value = !overlay.value;
+};
 </script>

@@ -2,12 +2,12 @@
   <header>
     <nav class="bg-[--black-middle] border-b-[1px] border-[#3B3C3F]">
       <div class="wrapper h-[60px] flex items-center justify-between">
-        <router-link to="/">
+        <div>
           <div class="flex gap-[10px]">
             <img class="w-[26px]" src="@/assets/logo.svg" />
             <p class="font-bold">GeoPrivacy</p>
           </div>
-        </router-link>
+        </div>
         <div
           class="w-[284px] h-[37px] flex items-center justify-between px-4 rounded bg-[--black-darken]"
         >
@@ -18,7 +18,7 @@
           v-for="link in links"
           :key="link"
           :to="link.link"
-          class="link font-semibold text-[--grey]"
+          class="link relative font-semibold text-[--grey]"
           :class="{ active: link === currentlyActiveItem }"
         >
           {{ link.name }}
@@ -37,8 +37,26 @@ import { RouterLink } from "vue-router";
 import { reactive } from "vue";
 
 const links = reactive([
-  { link: "/", name: "Позицианирование проекта" },
+  { link: "/test", name: "Позицианирование проекта" },
   { link: "/", name: "Профили доменов" },
-  { link: "/", name: "Обзор локации" },
+  { link: "/location", name: "Обзор локации" },
 ]);
 </script>
+
+<style lang="scss" scoped>
+.link:hover {
+  color: #fff;
+}
+.active {
+  color: #fff;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #c74b24;
+  }
+}
+</style>

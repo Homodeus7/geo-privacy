@@ -1,6 +1,8 @@
 <template>
   <HeaderView />
-  <RouterView />
+  <div class="wrapper min-h-[100%] flex flex-col gap-10 py-14">
+    <RouterView />
+  </div>
   <FooterView />
 </template>
 
@@ -16,6 +18,7 @@ import FooterView from "@/components/nav/FooterView.vue";
   --webkit-font-smoothing: antialiased;
   --moz-osx-font-smoothing: grayscale;
 }
+
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;

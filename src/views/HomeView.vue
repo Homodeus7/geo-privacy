@@ -1,17 +1,17 @@
 <template>
-  <div class="wrapper h-[100%] flex flex-col gap-10 py-14">
-    <ScanResults />
-    <ItemResults />
-    <TumblersRow />
+  <ScanResults />
+  <ItemResults />
+  <TumblersRow />
+  <div class="flex gap-7 items-start justify-between">
     <RequestInfo />
-    <GraphMap />
-
+    <ItemsInfo />
   </div>
 </template>
+
 <script setup>
 import ScanResults from "@/components/home/ScanResults.vue";
 import ItemResults from "@/components/home/ItemResults.vue";
 import TumblersRow from "@/components/home/TumblersRow.vue";
 import RequestInfo from "@/components/home/RequestInfo.vue";
-import GraphMap from "@/components/graphs/GraphMap.vue";
+import ItemsInfo from "@/components/home/ItemsInfo.vue";
 </script>
