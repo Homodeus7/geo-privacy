@@ -3,7 +3,7 @@
     <div
       v-for="item in data"
       :key="item.id"
-      class="p-10 bg-[--black-middle] flex gap-8"
+      class="p-10 bg-[--black-middle] rounded-md flex gap-8"
     >
       <div class="flex flex-col justify-between">
         <div class="flex flex-col gap-5 items-center">
