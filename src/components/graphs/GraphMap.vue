@@ -1,58 +1,40 @@
 <template>
-  <div class="w-full text-center max-w-[600px] mx-auto">
-    <h3 class="uppercase text-[#0D8E38] px-2 pb-2 font-medium">
-      Архитектура домена
-    </h3>
-    <Line :data="data" :options="options" class="max-h-[350px] bg-[#1E1F23]" />
-  </div>
+  <VueFlow v-model="elements" style="height: 400px" />
 </template>
-<script lang="ts" setup>
-import { Line } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-} from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+<script setup>
+import { ref, onMounted } from "vue";
+import { VueFlow, useVueFlow } from "@vue-flow/core";
 
-// const points
+const initialNodes = ref([
+  {
+    id: "1",
+    position: { x: 50, y: 50 },
+    label: "Node 1",
+  },
+  {
+    id: "2",
+    position: { x: 50, y: 250 },
+    label: "Node 2",
+  },
+]);
+const { addEdges } = useVueFlow({
+  nodes: initialNodes,
+});
 
-const data = {
-  labels: ["qwe", "ipsu", "lorem", "sdf", "jan", "feb"],
-  datasets: [
+onMounted(() => {
+  // Add an edge after mount
+  addEdges([
     {
-      label: "Архитектура домена",
-      backgroundColor: "#0D8E38",
-      borderColor: "#0D8E38",
-      color: "#0D8E38",
-      data: [123, 123, 234, 456, 567, 600],
+      source: "1",
+      target: "2",
+      sourceHandle: null,
+      targetHandle: null,
     },
-    {
-      label: "Архитектура домена",
-      backgroundColor: "#C74B24",
-      borderColor: "#C74B24",
-      color: "#C74B24",
-      data: [96, 134, 256, 420, 670, 690],
-    },
-  ],
-};
-
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-};
+  ]);
+});
 </script>
+
+<style lang="scss">
+@import "@vue-flow/core/dist/style.css";
+</style>

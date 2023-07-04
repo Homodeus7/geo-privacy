@@ -47,7 +47,11 @@
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal text-xl">{{ value.result }}</div>
         </div>
-        <div v-for="value in dataPopup.desc" class="flex gap-5 items-start">
+        <div
+          v-for="(value, idx) in dataPopup.desc"
+          :key="value.name + idx"
+          class="flex gap-5 items-start"
+        >
           <div class="text-[--grey]">{{ value.name }}</div>
           <div class="font-normal">{{ value.value }}</div>
         </div>

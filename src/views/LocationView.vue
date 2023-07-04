@@ -1,7 +1,7 @@
 <template>
-  <GraphMap />
+  <GraphLine />
 </template>
 
 <script setup>
-import GraphMap from "@/components/graphs/GraphMap.vue";
+import GraphLine from "@/components/graphs/GraphLine.vue";
 </script>
