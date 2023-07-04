@@ -3,7 +3,7 @@
     class="flex flex-col gap-7 min-w-[440px] p-5 bg-[--black-middle] rounded-md border-[1px] border-[#2D2E33]"
   >
     <div
-      class="p-4 bg-[--black-middle] rounded-sm border-[1px] border-[#2D2E33]"
+      class="p-4 bg-[--black-middle] rounded-[3px] border-[1px] border-[#2D2E33]"
     >
       <div class="flex justify-between">
         <div class="flex flex-col">
