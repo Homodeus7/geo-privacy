@@ -31,7 +31,17 @@
     </div>
   </div>
   <v-overlay v-model="overlay" class="flex items-center justify-center">
-    <div class="p-10 bg-[--black-middle] flex gap-8 max-w-[786px]">
+    <div class="p-10 bg-[--black-middle] flex gap-8 max-w-[786px] relative">
+      <div class="absolute right-7 top-7">
+        <v-btn
+          density="compact"
+          icon="mdi-plus"
+          class="rotate-45"
+          color="#E02A23"
+          @click="overlay = !overlay"
+          ><v-icon color="white"></v-icon
+        ></v-btn>
+      </div>
       <div class="flex items-center min-w-[200px]">
         <div class="flex flex-col gap-5 items-center text-center">
           <img :src="dataPopup.img" alt="logo" />
