@@ -118,8 +118,8 @@
     <div
       class="flex flex-col py-4 px-7 rounded-[3px] border-[1px] border-[#2D2E33]"
     >
+      <h3 class="font-medium text-2xl">Техническая информация</h3>
       <div class="overflow-y-auto max-h-[500px]">
-        <h3 class="font-medium text-2xl">Техническая информация</h3>
         <div v-if="card.kexAlgorithms" class="p-3 flex flex-col">
           <p class="font-medium text-[--grey] pb-1">Kex Algorithms:</p>
           <p
