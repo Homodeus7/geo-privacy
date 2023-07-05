@@ -2,7 +2,16 @@
   <div class="flex justify-between pb-14">
     <div class="flex flex-col items-center">
       <div class="flex items-center gap-10">
-        <img src="@/assets/img/icon-left-arrow.svg" />
+        <v-btn
+          density="compact"
+          icon="mdi-plus"
+          class="self-center"
+          variant="plain"
+          @click="active = !active"
+        >
+          <img src="@/assets/img/icon-left-arrow.svg" />
+        </v-btn>
+
         <p class="font-medium text-3xl">Результаты сканирования</p>
       </div>
       <div class="flex items-center gap-2">
