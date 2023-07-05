@@ -9,7 +9,7 @@
     </div>
 
     <div
-      v-if="card.dangers"
+      v-if="card.dangers.length !== 0"
       class="flex items-center justify-between pt-3 gap-2"
     >
       <div class="flex items-center gap-2">
