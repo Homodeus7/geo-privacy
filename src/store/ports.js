@@ -169,6 +169,7 @@ export const usePorts = defineStore("ports", {
             url: "https://geoprivacy.com/warning.html",
           },
         ],
+        dangers: [],
         decision: [
           {
             name: "CVE-2021-44228",

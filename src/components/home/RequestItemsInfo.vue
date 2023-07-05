@@ -34,7 +34,11 @@
       </div>
     </div>
     <div v-if="card.dangers" class="flex flex-col bg-[#27282D] rounded-[3px]">
-      <div v-for="danger in toHighDanger" class="p-3">
+      <div
+        v-for="danger in toHighDanger"
+        :key="danger.name + danger.code"
+        class="p-3"
+      >
         <div class="flex justify-between">
           <div class="min-w-[163px] flex flex-col p-3 gap-2">
             <p class="font-medium">{{ danger.name }}</p>
@@ -86,7 +90,11 @@
       v-if="card.decision"
       class="flex flex-col p-4 rounded-[3px] border-[1px] border-[#2D2E33]"
     >
-      <div v-for="decision in card.decision" class="p-3">
+      <div
+        v-for="decision in card.decision"
+        :key="decision.name + decision.code"
+        class="p-3"
+      >
         <div class="flex justify-between">
           <div class="min-w-[163px] flex flex-col p-3 gap-2">
             <p class="font-medium">{{ decision.name }}</p>
@@ -187,12 +195,16 @@ const card = computed(
 
 const sort = ref(false);
 
-const portDangers = computed(() => card.value);
+const portDangers = computed(() => card.value.dangers);
 
 const toHighDanger = computed(() =>
-  portDangers.value.sort((a, b) =>
-    sort.value ? a.rating - b.rating : b.rating - a.rating
-  )
+  portDangers.value.length > 1
+    ? portDangers.value
+        .map((p) => p)
+        .sort((a, b) =>
+          sort.value ? a.rating - b.rating : b.rating - a.rating
+        )
+    : portDangers.value
 );
 </script>
 
