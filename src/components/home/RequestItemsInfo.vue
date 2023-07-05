@@ -20,12 +20,19 @@
       </div>
       <div class="flex items-center gap-2">
         <p>Угроза</p>
-        <v-btn size="x-small" class="tumb" color="#2D2E33" @click="sort = true">
+        <v-btn
+          size="x-small"
+          class="tumb"
+          rounded="0"
+          color="#2D2E33"
+          @click="sort = true"
+        >
           <img src="@/assets/img/icon-g-arrow.svg" />
         </v-btn>
         <v-btn
           size="x-small"
           class="tumb"
+          rounded="0"
           color="#2D2E33"
           @click="sort = false"
         >

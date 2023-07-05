@@ -8,9 +8,27 @@
       variant="outlined"
       color="#E09423"
       class="text-none font-medium hover:text-[--green]"
+      @click="overlay = !overlay"
       >Сканировать
     </v-btn>
   </div>
+  <template>
+    <v-overlay v-model="overlay" class="flex items-center justify-center">
+      <div class="p-8 bg-[--black-middle] flex-col gap-4 relative rounded-md">
+        <div class="absolute right-7 top-7">
+          <v-btn
+            theme="dark"
+            density="compact"
+            icon="mdi-plus"
+            class="rotate-45 z-10"
+            color="#E02A23"
+            @click="overlay = !overlay"
+          ></v-btn>
+        </div>
+        <div></div>
+      </div>
+    </v-overlay>
+  </template>
   <div
     v-for="(item, idx) in scanningResults"
     :key="idx"
@@ -67,9 +85,13 @@
     </v-btn>
   </div>
 </template>
+
 <script setup>
-import { reactive } from "vue";
 import RatingCard from "@/components/base/RatingCard.vue";
+import { reactive } from "vue";
+import { ref } from "vue";
+
+const overlay = ref(false);
 
 const scanningResults = reactive([
   {
