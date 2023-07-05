@@ -1,22 +1,22 @@
 <template>
   <div
-    v-for="(port, idx) in ports"
-    :key="port + idx"
     class="2xl:max-w-[908px] max-w-[808px] flex flex-col p-5 gap-7 bg-[--black-middle] rounded-md border-[1px] border-[#2D2E33]"
   >
-    <h2 class="font-medium text-3xl">{{ port.portName }}</h2>
+    <h2 class="font-medium text-3xl">{{ card.portName }}</h2>
 
     <div class="p-4 rounded-[3px] border-[1px] border-[#2D2E33]">
-      <p class="font-medium">{{ port.portDesc }}</p>
+      <p class="font-medium">{{ card.portDesc }}</p>
     </div>
 
-    <div class="flex items-center justify-between p-3 gap-2">
+    <div
+      v-if="card.dangers"
+      class="flex items-center justify-between pt-3 gap-2"
+    >
       <div class="flex items-center gap-2">
         <img class="w-8" src="@/assets/img/icon-danger.svg" />
         <p class="font-medium">
-          Найдено уязвимостей: {{ port.dangers.length }}
+          Найдено уязвимостей: {{ card.dangers.length }}
         </p>
-        <p class="font-medium">{{}}</p>
       </div>
       <div class="flex items-center gap-2">
         <p>Угроза</p>
@@ -33,8 +33,7 @@
         </v-btn>
       </div>
     </div>
-
-    <div class="flex flex-col bg-[#27282D] rounded-[3px]">
+    <div v-if="card.dangers" class="flex flex-col bg-[#27282D] rounded-[3px]">
       <div v-for="danger in toHighDanger" class="p-3">
         <div class="flex justify-between">
           <div class="min-w-[163px] flex flex-col p-3 gap-2">
@@ -56,29 +55,38 @@
       </div>
     </div>
 
-    <div class="flex items-center justify-between p-3 gap-2">
+    <div
+      v-if="card.exploits"
+      class="flex items-center justify-between pt-3 gap-2"
+    >
       <div class="flex items-center gap-2">
         <img class="w-8" src="@/assets/img/icon-exploit-dash.svg" />
         <p class="font-medium">
-          Найдено эксплоитов: {{ port.exploits.length }}
+          Найдено эксплоитов: {{ card.exploits.length }}
         </p>
       </div>
     </div>
-    <div class="flex flex-col rounded-[3px] bg-[#27282D] p-7">
-      <p class="pb-3" v-for="(exploit, idx) in port.exploits" :key="idx">
+    <div
+      v-if="card.exploits"
+      class="flex flex-col rounded-[3px] bg-[#27282D] p-7"
+    >
+      <p class="pb-3" v-for="(exploit, idx) in card.exploits" :key="idx">
         {{ idx + 1 }}. {{ exploit.name }}: {{ exploit.url }}
       </p>
     </div>
 
-    <div class="flex items-center justify-between p-3 gap-2">
+    <div class="flex items-center justify-between pt-3 gap-2">
       <div class="flex items-center gap-2">
         <img class="w-8" src="@/assets/img/icon-decision.svg" />
         <p class="font-medium">Решения</p>
       </div>
     </div>
 
-    <div class="flex flex-col p-4 rounded-[3px] border-[1px] border-[#2D2E33]">
-      <div v-for="decision in port.decision" class="p-3">
+    <div
+      v-if="card.decision"
+      class="flex flex-col p-4 rounded-[3px] border-[1px] border-[#2D2E33]"
+    >
+      <div v-for="decision in card.decision" class="p-3">
         <div class="flex justify-between">
           <div class="min-w-[163px] flex flex-col p-3 gap-2">
             <p class="font-medium">{{ decision.name }}</p>
@@ -98,6 +106,66 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="flex flex-col py-4 px-7 rounded-[3px] border-[1px] border-[#2D2E33]"
+    >
+      <div class="overflow-y-auto h-[600px]">
+        <h3 class="font-medium text-2xl">Техническая информация</h3>
+        <div v-if="card.kexAlgorithms" class="p-3 flex flex-col">
+          <p class="font-medium text-[--grey] pb-1">Kex Algorithms:</p>
+          <p
+            v-for="(item, idx) in card.kexAlgorithms"
+            :key="idx"
+            class="font-medium text-[--grey] pl-1"
+          >
+            {{ item }}
+          </p>
+        </div>
+        <div v-if="card.keyAlgorithms" class="p-3 flex flex-col">
+          <p class="font-medium text-[--grey] pb-1">
+            Server Host Key Algorithms:
+          </p>
+          <p
+            v-for="(item, idx) in card.keyAlgorithms"
+            :key="idx"
+            class="font-medium text-[--grey] pl-1"
+          >
+            {{ item }}
+          </p>
+        </div>
+        <div v-if="card.encryptionAlgorithms" class="p-3 flex flex-col">
+          <p class="font-medium text-[--grey] pb-1">Encryption Algorithms:</p>
+          <p
+            v-for="(item, idx) in card.encryptionAlgorithms"
+            :key="idx"
+            class="font-medium text-[--grey] pl-1"
+          >
+            {{ item }}
+          </p>
+        </div>
+        <div v-if="card.encryptionAlgorithms" class="p-3 flex flex-col">
+          <p class="font-medium text-[--grey] pb-1">MAC Algorithms:</p>
+          <p
+            v-for="(item, idx) in card.encryptionAlgorithms"
+            :key="idx"
+            class="font-medium text-[--grey] pl-1"
+          >
+            {{ item }}
+          </p>
+        </div>
+        <div v-if="card.compressionAlgorithms" class="p-3 flex flex-col">
+          <p class="font-medium text-[--grey] pb-1">Compression Algorithms:</p>
+          <p
+            v-for="(item, idx) in card.compressionAlgorithms"
+            :key="idx"
+            class="font-medium text-[--grey] pl-1"
+          >
+            {{ item }}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -109,11 +177,19 @@ import { usePorts } from "@/store/ports";
 
 const portsStore = usePorts();
 
-const ports = computed(() => portsStore.ports);
+// const ports = computed(() => portsStore.ports);
+
+const onePort = computed(() => portsStore.port);
+
+const infoPorts = computed(() => portsStore.ports);
+
+const card = computed(
+  () => infoPorts.value.filter((p) => p.portName === onePort.value)[0]
+);
 
 const sort = ref(false);
 
-const portsDangers = computed(() => ports.value.map((p) => p.dangers)[0]);
+const portsDangers = computed(() => infoPorts.value.map((p) => p.dangers)[0]);
 
 const toHighDanger = computed(() =>
   portsDangers.value.sort((a, b) =>

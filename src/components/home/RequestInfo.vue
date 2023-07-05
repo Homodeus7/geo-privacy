@@ -27,7 +27,9 @@
         </div>
       </div>
     </div>
-    <RequestItems v-if="active" />
+    <v-expand-transition>
+      <RequestItems v-if="active" />
+    </v-expand-transition>
   </div>
 </template>
 
