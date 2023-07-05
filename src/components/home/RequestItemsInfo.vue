@@ -177,22 +177,20 @@ import { usePorts } from "@/store/ports";
 
 const portsStore = usePorts();
 
-// const ports = computed(() => portsStore.ports);
-
-const onePort = computed(() => portsStore.port);
+const namePort = computed(() => portsStore.port);
 
 const infoPorts = computed(() => portsStore.ports);
 
 const card = computed(
-  () => infoPorts.value.filter((p) => p.portName === onePort.value)[0]
+  () => infoPorts.value.filter((p) => p.portName === namePort.value)[0]
 );
 
 const sort = ref(false);
 
-const portsDangers = computed(() => infoPorts.value.map((p) => p.dangers)[0]);
+const portDangers = computed(() => card.value);
 
 const toHighDanger = computed(() =>
-  portsDangers.value.sort((a, b) =>
+  portDangers.value.sort((a, b) =>
     sort.value ? a.rating - b.rating : b.rating - a.rating
   )
 );
