@@ -44,48 +44,50 @@
           ></v-btn>
           <p class="lowercase font-medium">расширенный скан</p>
         </div>
-        <div v-if="active" class="flex flex-col gap-4 pb-[16px]">
-          <v-text-field
-            theme="dark"
-            density="compact"
-            variant="solo"
-            label="Домен"
-            hide-details="auto"
-            class="min-w-[190px]"
-          ></v-text-field>
-          <v-text-field
-            theme="dark"
-            density="compact"
-            variant="solo"
-            label="IP"
-            hide-details="auto"
-            class="min-w-[190px]"
-          ></v-text-field>
-          <v-text-field
-            theme="dark"
-            density="compact"
-            variant="solo"
-            label="Ссылка"
-            hide-details="auto"
-            class="min-w-[190px]"
-          ></v-text-field>
-          <v-text-field
-            theme="dark"
-            density="compact"
-            variant="solo"
-            label="Логин"
-            hide-details="auto"
-            class="min-w-[190px]"
-          ></v-text-field>
-          <v-text-field
-            theme="dark"
-            density="compact"
-            variant="solo"
-            label="Пароль"
-            hide-details="auto"
-            class="min-w-[190px]"
-          ></v-text-field>
-        </div>
+        <v-expand-transition>
+          <div v-if="active" class="flex flex-col gap-4 pb-[16px]">
+            <v-text-field
+              theme="dark"
+              density="compact"
+              variant="solo"
+              label="Домен"
+              hide-details="auto"
+              class="min-w-[190px]"
+            ></v-text-field>
+            <v-text-field
+              theme="dark"
+              density="compact"
+              variant="solo"
+              label="IP"
+              hide-details="auto"
+              class="min-w-[190px]"
+            ></v-text-field>
+            <v-text-field
+              theme="dark"
+              density="compact"
+              variant="solo"
+              label="Ссылка"
+              hide-details="auto"
+              class="min-w-[190px]"
+            ></v-text-field>
+            <v-text-field
+              theme="dark"
+              density="compact"
+              variant="solo"
+              label="Логин"
+              hide-details="auto"
+              class="min-w-[190px]"
+            ></v-text-field>
+            <v-text-field
+              theme="dark"
+              density="compact"
+              variant="solo"
+              label="Пароль"
+              hide-details="auto"
+              class="min-w-[190px]"
+            ></v-text-field>
+          </div>
+        </v-expand-transition>
         <v-btn
           theme="dark"
           size="large"
