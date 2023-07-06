@@ -96,7 +96,7 @@
 
       <div
         v-if="card.decision"
-        class="flex flex-col p-3 rounded-[3px] border-[1px] border-[#2D2E33]"
+        class="flex flex-col rounded-[3px] border-[1px] border-[#2D2E33]"
       >
         <div
           v-for="decision in card.decision"
@@ -124,9 +124,13 @@
       </div>
     </div>
     <div
-      class="flex flex-col py-4 px-7 rounded-[3px] border-[1px] border-[#2D2E33]"
+      class="flex flex-col py-4 px-7 rounded-[3px] border-[1px] border-[#2D2E33] relative"
     >
       <h3 class="font-medium text-2xl">Техническая информация</h3>
+      <img
+        class="w-3 absolute right-[25px] top-[34px]"
+        src="@/assets/img/icon-arrow-up.svg"
+      />
       <div class="overflow-y-auto max-h-[500px]">
         <div v-if="card.kexAlgorithms" class="p-3 flex flex-col">
           <p class="font-medium text-[--grey] pb-1">Kex Algorithms:</p>
