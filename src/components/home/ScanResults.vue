@@ -1,10 +1,9 @@
 <template>
   <div class="flex justify-between pb-3">
-    <div class="flex gap-10">
+    <div class="flex gap-10 pt-2">
       <v-btn
         density="compact"
         icon="mdi-plus"
-        class="pt-2"
         variant="plain"
         @click="active = !active"
       >
