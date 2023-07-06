@@ -21,12 +21,16 @@
         </div>
       </div>
     </div>
+    <template #node-custom="{ data }">
+      <CustomNode :data="data" />
+    </template>
   </VueFlow>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import { VueFlow, useVueFlow, Position } from "@vue-flow/core";
+import CustomNode from "./CustomNode.vue";
 
 const X_1 = 30;
 const X_2 = 340;
@@ -63,7 +67,6 @@ const initialNodes = ref([
     id: "2",
     position: { x: X_2, y: Y_4 },
     label: "Node 2",
-    handlePosition: Position.Right,
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#C74B24", borderColor: "#C74B24" },
@@ -88,7 +91,9 @@ const initialNodes = ref([
     id: "5",
     position: { x: X_3, y: Y_1 },
     label: "Node 5",
-    sourcePosition: Position.Right,
+    type: "custom",
+    data: { label: "Node 5", text: "MX" },
+    sourcePosition: Position.Left,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#0066FF", borderColor: "#0066FF" },
   },
@@ -96,6 +101,8 @@ const initialNodes = ref([
     id: "6",
     position: { x: X_3, y: Y_2 },
     label: "Node 6",
+    type: "custom",
+    data: { label: "Node 6", text: "MX" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#0066FF", borderColor: "#0066FF" },
@@ -104,6 +111,8 @@ const initialNodes = ref([
     id: "7",
     position: { x: X_3, y: Y_3 },
     label: "Node 7",
+    type: "custom",
+    data: { label: "Node 7", text: "MX" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#0066FF", borderColor: "#0066FF" },
@@ -112,6 +121,8 @@ const initialNodes = ref([
     id: "8",
     position: { x: X_3, y: Y_4 },
     label: "Node 8",
+    type: "custom",
+    data: { label: "Node 8", text: "MX" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#0066FF", borderColor: "#0066FF" },
@@ -120,6 +131,8 @@ const initialNodes = ref([
     id: "9",
     position: { x: X_3, y: Y_5 },
     label: "Node 9",
+    type: "custom",
+    data: { label: "Node 9", text: "MX" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#0066FF", borderColor: "#0066FF" },
@@ -144,6 +157,8 @@ const initialNodes = ref([
     id: "12",
     position: { x: X_4, y: Y_2 },
     label: "Node 12",
+    type: "custom",
+    data: { label: "Node 9", text: "TXT" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#23A04D", borderColor: "#23A04D" },
@@ -152,6 +167,8 @@ const initialNodes = ref([
     id: "13",
     position: { x: X_4, y: Y_3 },
     label: "Node 13",
+    type: "custom",
+    data: { label: "Node 13", text: "TXT" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "23A04D", borderColor: "#23A04D" },
@@ -160,6 +177,8 @@ const initialNodes = ref([
     id: "14",
     position: { x: X_5, y: Y_4 },
     label: "Node 14",
+    type: "custom",
+    data: { label: "Node 14", text: "TXT" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "#23A04D", borderColor: "#23A04D" },
@@ -168,6 +187,8 @@ const initialNodes = ref([
     id: "15",
     position: { x: X_5, y: Y_2 },
     label: "Node 15",
+    type: "custom",
+    data: { label: "Node 15", text: "TXT" },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: { "--vf-node-color": "23A04D", borderColor: "#23A04D" },
@@ -249,8 +270,8 @@ onMounted(() => {
       style: { stroke: "#23A04D" },
     },
     {
-      id: "e12-14",
-      source: "12",
+      id: "e3-14",
+      source: "3",
       target: "14",
       style: { stroke: "#23A04D" },
     },
@@ -270,13 +291,14 @@ onMounted(() => {
 .vue-flow {
   background-color: #1e1f23;
   border-radius: 8px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: bold;
 }
 .vue-flow__node {
   padding: 6px 20px;
   color: #ffffff;
   background-color: #1e1f23;
-  border: 3px solid;
+  border: 2px solid;
   border-radius: 6px;
 }
 </style>

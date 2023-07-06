@@ -1,4 +1,5 @@
 <template>
+  //C74B24
   <div class="flex justify-between p-2 bg-[--black-middle]">
     <v-btn
       v-for="tumbler in tumblers"
@@ -36,10 +37,6 @@ const tumblers = reactive([
   { link: "#", name: "Связанные IP адреса", value: 1, id: 5, active: false },
   { link: "#", name: "Связанные URL", value: 1, id: 6, active: false },
 ]);
-
-const onTumbler = (id) => {
-  active.value = !active.value;
-};
 </script>
 
 <style lang="scss">
