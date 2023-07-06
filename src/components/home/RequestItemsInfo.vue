@@ -3,7 +3,6 @@
     class="2xl:max-w-[908px] max-w-[808px] flex flex-col p-5 gap-7 bg-[--black-middle] rounded-md border-[1px] border-[#2D2E33]"
   >
     <h2 class="font-medium text-3xl">{{ card.portName }}</h2>
-
     <div class="p-4 rounded-[3px] border-[1px] border-[#2D2E33]">
       <p class="font-medium">{{ card.portDesc }}</p>
     </div>
