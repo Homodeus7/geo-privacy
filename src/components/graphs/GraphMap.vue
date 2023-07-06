@@ -215,75 +215,97 @@ onMounted(() => {
       id: "e1-2",
       source: "1",
       target: "2",
-      style: { stroke: "#C74B24" },
+      animated: true,
+      style: { stroke: "#C74B24", "stroke-width": "1.5px" },
     },
     {
       id: "e1-3",
       source: "1",
       target: "3",
-      style: { stroke: "#C74B24" },
+      animated: true,
+      style: {
+        stroke: "#C74B24",
+        "stroke-width": "1.5px",
+        "stroke-linecap": "round",
+      },
     },
-    { id: "e1-4", source: "1", target: "4", style: { stroke: "#C74B24" } },
+    {
+      id: "e1-4",
+      source: "1",
+      target: "4",
+      animated: true,
+      style: { stroke: "#C74B24", "stroke-width": "1.5px" },
+    },
     { id: "e3-5", source: "3", target: "5", style: { stroke: "#0066FF" } },
     {
       id: "e2-6",
       source: "2",
       target: "6",
-      style: { stroke: "#0066FF" },
+      animated: true,
+      style: { stroke: "#0066FF", "stroke-width": "1.5px" },
     },
     {
       id: "e3-7",
       source: "3",
       target: "7",
-      style: { stroke: "#0066FF" },
+      animated: true,
+      style: { stroke: "#0066FF", "stroke-width": "1.5px" },
     },
     {
       id: "e2-8",
       source: "2",
       target: "8",
-      style: { stroke: "#0066FF" },
+      animated: true,
+      style: { stroke: "#0066FF", "stroke-width": "1.5px" },
     },
     {
       id: "e4-9",
       source: "4",
       target: "9",
-      style: { stroke: "#0066FF" },
+      animated: true,
+      style: { stroke: "#0066FF", "stroke-width": "1.5px" },
     },
     {
       id: "e1-10",
       source: "1",
       target: "10",
-      style: { stroke: "#C74B24" },
+      animated: true,
+      style: { stroke: "#C74B24", "stroke-width": "1.5px" },
     },
     {
       id: "e1-11",
       source: "1",
       target: "11",
-      style: { stroke: "#C74B24" },
+      animated: true,
+      style: { stroke: "#C74B24", "stroke-width": "1.5px" },
     },
     {
       id: "e3-12",
       source: "3",
       target: "12",
-      style: { stroke: "#23A04D" },
+      animated: true,
+      style: { stroke: "#23A04D", "stroke-width": "1.5px" },
     },
     {
       id: "e3-13",
       source: "3",
       target: "13",
-      style: { stroke: "#23A04D" },
+      animated: true,
+      style: { stroke: "#23A04D", "stroke-width": "1.5px" },
     },
     {
       id: "e3-14",
       source: "3",
       target: "14",
-      style: { stroke: "#23A04D" },
+      animated: true,
+      style: { stroke: "#23A04D", "stroke-width": "1.5px" },
     },
     {
       id: "e12-15",
       source: "12",
       target: "15",
-      style: { stroke: "#23A04D" },
+      animated: true,
+      style: { stroke: "#23A04D", "stroke-width": "1.5px" },
     },
   ]);
 });
@@ -302,7 +324,7 @@ onMounted(() => {
   padding: 6px 20px;
   color: #ffffff;
   background-color: #1e1f23;
-  border: 2px solid;
+  border: 1.5px solid;
   border-radius: 6px;
 }
 </style>
