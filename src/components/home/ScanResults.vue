@@ -12,7 +12,7 @@
           <img src="@/assets/img/icon-left-arrow.svg" />
         </v-btn>
 
-        <p class="font-medium text-3xl">Результаты сканирования</p>
+        <h1 class="font-medium text-3xl">Результаты сканирования</h1>
       </div>
       <div class="flex items-center gap-2">
         <img src="@/assets/img/icon-refresh.svg" />
