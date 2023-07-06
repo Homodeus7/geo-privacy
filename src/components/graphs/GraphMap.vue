@@ -51,7 +51,6 @@ const initialNodes = ref([
     id: "1",
     position: { x: X_1, y: Y_1 },
     label: "Node 1",
-    text: "adsasd",
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
     style: {
@@ -175,7 +174,7 @@ const initialNodes = ref([
   },
 ]);
 
-const { addEdges, nodesDraggable, elementsSelectable } = useVueFlow({
+const { addEdges, nodesDraggable, elementsSelectable, panOnDrag } = useVueFlow({
   nodes: initialNodes,
   defaultZoom: 1,
   maxZoom: 1,
@@ -183,6 +182,7 @@ const { addEdges, nodesDraggable, elementsSelectable } = useVueFlow({
 });
 
 onMounted(() => {
+  panOnDrag.value = false;
   nodesDraggable.value = false;
   elementsSelectable.value = false;
   addEdges([
