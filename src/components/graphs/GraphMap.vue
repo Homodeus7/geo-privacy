@@ -203,8 +203,8 @@ const { addEdges, nodesDraggable, elementsSelectable, panOnDrag } = useVueFlow({
 });
 
 onMounted(() => {
-  panOnDrag.value = false;
-  nodesDraggable.value = false;
+  // panOnDrag.value = false;
+  // nodesDraggable.value = false;
   elementsSelectable.value = false;
   addEdges([
     {
