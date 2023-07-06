@@ -9,7 +9,7 @@
     </div>
 
     <div
-      v-if="card.dangers"
+      v-if="card.dangers.length !== 0"
       class="flex items-center justify-between pt-3 gap-2"
     >
       <div class="flex items-center gap-2">
@@ -20,12 +20,19 @@
       </div>
       <div class="flex items-center gap-2">
         <p>Угроза</p>
-        <v-btn size="x-small" class="tumb" color="#2D2E33" @click="sort = true">
+        <v-btn
+          size="x-small"
+          class="tumb"
+          rounded="0"
+          color="#2D2E33"
+          @click="sort = true"
+        >
           <img src="@/assets/img/icon-g-arrow.svg" />
         </v-btn>
         <v-btn
           size="x-small"
           class="tumb"
+          rounded="0"
           color="#2D2E33"
           @click="sort = false"
         >
@@ -118,8 +125,8 @@
     <div
       class="flex flex-col py-4 px-7 rounded-[3px] border-[1px] border-[#2D2E33]"
     >
+      <h3 class="font-medium text-2xl">Техническая информация</h3>
       <div class="overflow-y-auto max-h-[500px]">
-        <h3 class="font-medium text-2xl">Техническая информация</h3>
         <div v-if="card.kexAlgorithms" class="p-3 flex flex-col">
           <p class="font-medium text-[--grey] pb-1">Kex Algorithms:</p>
           <p

@@ -23,15 +23,33 @@
     <div class="flex gap-8 items-end">
       <div class="flex gap-2">
         <p class="font-medium text-[--grey] lowercase">Сохранить отчет</p>
-        <a href="#" download>
-          <p class="font-medium bg-[--black-middle] px-2">PDF</p>
-        </a>
-        <a href="#" download>
-          <p class="font-medium bg-[--black-middle] px-2">XLS</p>
-        </a>
-        <a href="#" download>
-          <p class="font-medium bg-[--black-middle] px-2">HTML</p>
-        </a>
+        <v-btn
+          theme="dark"
+          size="small"
+          rounded="0"
+          class="tumb"
+          color="#2D2E33"
+        >
+          PDF
+        </v-btn>
+        <v-btn
+          theme="dark"
+          size="small"
+          rounded="0"
+          class="tumb"
+          color="#2D2E33"
+        >
+          XLS
+        </v-btn>
+        <v-btn
+          theme="dark"
+          size="small"
+          rounded="0"
+          class="tumb"
+          color="#2D2E33"
+        >
+          HTML
+        </v-btn>
       </div>
       <div class="flex flex-col items-end gap-2">
         <div class="bg-[--blue-lighten] py-1 px-4 rounded">geoprivacy.com</div>

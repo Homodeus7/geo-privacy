@@ -1,9 +1,6 @@
 <template>
-  <div class="w-full text-center max-w-[600px] mx-auto">
-    <h3 class="uppercase text-[#0D8E38] px-2 pb-2 font-medium">
-      Архитектура домена
-    </h3>
-    <Line :data="data" :options="options" class="max-h-[350px] bg-[#1E1F23]" />
+  <div class="w-full text-center">
+    <Line :data="data" :options="options" class="h-[450px] bg-[#1E1F23]" />
   </div>
 </template>
 <script lang="ts" setup>

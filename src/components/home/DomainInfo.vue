@@ -34,12 +34,12 @@
     <div class="p-10 bg-[--black-middle] flex gap-8 max-w-[786px] relative">
       <div class="absolute right-7 top-7">
         <v-btn
+          theme="dark"
           density="compact"
           icon="mdi-plus"
-          class="rotate-45"
+          class="rotate-45 z-10"
           color="#E02A23"
           @click="overlay = !overlay"
-          ><v-icon color="white"></v-icon
         ></v-btn>
       </div>
       <div class="flex items-center min-w-[200px]">

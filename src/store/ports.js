@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const usePorts = defineStore("ports", {
   state: () => ({
-    port: "20 / TCP",
+    port: "21 / TCP",
     ports: [
       {
         id: 0,

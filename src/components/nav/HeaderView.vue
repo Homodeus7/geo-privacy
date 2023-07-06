@@ -10,11 +10,26 @@
             <p class="font-bold">GeoPrivacy</p>
           </div>
         </div>
-        <div
+        <!-- <div
           class="w-[284px] h-[37px] flex items-center justify-between px-4 rounded bg-[--black-darken]"
         >
           <p class="font-medium text-[--grey]">Искомый домен</p>
           <img src="@/assets/img/icon-search.svg" />
+        </div> -->
+        <div
+          class="w-[284px] flex items-center justify-between rounded bg-[--black-darken]"
+        >
+          <v-text-field
+            theme="dark"
+            variant="outlined"
+            rounded="0"
+            class="max-w-[284px]"
+            density="compact"
+            label="Искомый домен"
+            append-inner-icon="mdi-magnify"
+            hide-details
+            single-line
+          ></v-text-field>
         </div>
         <router-link
           v-for="link in links"
@@ -36,13 +51,24 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 const links = reactive([
   { link: "/test", name: "Позицианирование проекта" },
   { link: "/", name: "Профили доменов" },
   { link: "/location", name: "Обзор локации" },
 ]);
+
+const loaded = ref(false);
+const loading = ref(false);
+
+const onClick = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    loading.value = true;
+  }, 2000);
+};
 </script>
 
 <style lang="scss" scoped>
