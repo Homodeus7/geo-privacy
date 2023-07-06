@@ -6,9 +6,9 @@
 import { ref, onMounted } from "vue";
 import { VueFlow, useVueFlow, Position } from "@vue-flow/core";
 
-const X_1 = 120;
-const X_2 = X_1 * 2;
-const X_3 = X_1 * 3;
+const X_1 = 60;
+const X_2 = 240;
+const X_3 = X_2 * 2;
 
 const initialNodes = ref([
   {
