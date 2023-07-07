@@ -1,17 +1,25 @@
 <template>
-  <HeaderView />
-  <div
-    class="2xl:max-w-[1380px] max-w-[1280px] mx-auto min-h-[100vh] flex flex-col gap-10 py-14"
-  >
-    <RouterView />
-  </div>
-  <FooterView />
+  <component :is="layout + '-layout'" v-if="layout" />
 </template>
 
-<script setup>
-import { RouterView } from "vue-router";
-import HeaderView from "@/components/nav/HeaderView.vue";
-import FooterView from "@/components/nav/FooterView.vue";
+<script>
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import MainLayout from "@/layouts/MainLayout.vue";
+import LoginLayout from "@/layouts/LoginLayout.vue";
+export default {
+  setup() {
+    const route = useRoute();
+
+    return {
+      layout: computed(() => route.meta.layout),
+    };
+  },
+  components: {
+    MainLayout,
+    LoginLayout,
+  },
+};
 </script>
 
 <style lang="scss">
@@ -20,13 +28,4 @@ import FooterView from "@/components/nav/FooterView.vue";
   --webkit-font-smoothing: antialiased;
   --moz-osx-font-smoothing: grayscale;
 }
-
-// .wrapper {
-//   max-width: 1280px;
-//   margin: 0 auto;
-//   transition: 0.2s;
-//   @media (min-width: 1536px) {
-//     max-width: 1380px;
-//   }
-// }
 </style>
