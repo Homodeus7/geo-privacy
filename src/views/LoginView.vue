@@ -11,9 +11,10 @@
       variant="outlined"
       color="#E09423"
       class="text-none font-medium hover:text-[--green]"
-      @click="overlay = !overlay"
+      @click="registrationOverlay = !registrationOverlay"
       >Регистрация
     </v-btn>
+    <registration-popup v-model="registrationOverlay" @click="closePopup" />
   </div>
   <div
     class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] flex-auto relative"
@@ -34,8 +35,10 @@
         rounded="xs"
         class="text-none z-10"
         color="#C74B24"
+        @click="overlayScanning = !overlayScanning"
         >Провести сканирование</v-btn
       >
+      <ScanningPopup v-model="overlayScanning" @click="closeScanningPopup" />
     </div>
     <div class="flex justify-between w-[251px]">
       <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
@@ -53,56 +56,29 @@
     <div class="text-[--grey]">Geo Privacy, 2023</div>
     <div class="text-[--grey]">Geo Privacy, 2023</div>
   </div>
-  <!-- <v-sheet
-      min-width="300"
-      class="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]"
-    >
-      <v-card color="eeeeee" class="w-[360px] h-[300px]">
-        <v-progress-circular
-          v-if="isLoading"
-          indeterminate
-          :size="100"
-          :width="10"
-          color="primary"
-          class="ml-[130px] mt-[90px]"
-        ></v-progress-circular>
-        <v-form
-          v-else
-          class="w-[300px] h-[220px] mx-auto mt-10"
-          validate-on="submit lazy"
-          @submit.prevent="log"
-        >
-          <v-text-field
-            v-model="valid.email.value"
-            :error-messages="valid.eError.value"
-            label="Login"
-          ></v-text-field>
-          <v-text-field
-            v-model="valid.password.value"
-            :error-messages="valid.pError.value"
-            label="Password"
-          ></v-text-field>
-          <v-btn
-            :disabled="!isValid"
-            type="submit"
-            elevated
-            block
-            class="text-none mt-4"
-            color="primary"
-            text="Login"
-          ></v-btn>
-        </v-form>
-      </v-card>
-    </v-sheet> -->
 </template>
 
 <script setup>
 import { useRouter } from "vue-router";
 import { useLoginForm } from "@/use/login-form";
 import { ref, computed } from "vue";
+import ScanningPopup from "@/components/popups/ScanningPopup.vue";
+import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 
-const overlay = ref(false);
 const router = useRouter();
+
+const registrationOverlay = ref(false);
+
+const overlayScanning = ref(false);
+
+const closePopup = () => {
+  registrationOverlay.value = !registrationOverlay.value;
+};
+
+const closeScanningPopup = () => {
+  overlayScanning.value = !overlayScanning.value;
+};
+
 const isLoading = ref(false);
 const valid = { ...useLoginForm() };
 
