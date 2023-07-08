@@ -4,9 +4,14 @@
       variant="outlined"
       color="#E09423"
       class="text-none font-medium hover:text-[--green]"
-      @click="overlay = !overlay"
+      @click="authOverlay = !authOverlay"
       >Вход
     </v-btn>
+    <AuthPopup
+      v-model="authOverlay"
+      @click="closeAuthPopup"
+      @onEnter="enterToRegistration"
+    />
     <v-btn
       variant="outlined"
       color="#E09423"
@@ -14,7 +19,11 @@
       @click="registrationOverlay = !registrationOverlay"
       >Регистрация
     </v-btn>
-    <registration-popup v-model="registrationOverlay" @click="closePopup" />
+    <RegistrationPopup
+      v-model="registrationOverlay"
+      @click="closePopup"
+      @onEnter="enterToAuth"
+    />
   </div>
   <div class="flex">
     <div
@@ -29,52 +38,27 @@
         GIS- технологий при визуализации и геопространственном моделировании
         базы данных объектов недвижимости
       </p>
-      <div>
+      <div class="flex flex-col gap-[50px] max-w-[258px]">
         <v-btn
           theme="dark"
           height="52"
           rounded="xs"
           class="text-none z-10"
           color="#C74B24"
-          @click="overlayScanning = !overlayScanning"
+          @click="scanningOverlay = !scanningOverlay"
           >Провести сканирование</v-btn
         >
-        <ScanningPopup v-model="overlayScanning" @click="closeScanningPopup" />
+        <ScanningPopup v-model="scanningOverlay" @click="closeScanningPopup" />
+        <SocialIcons />
       </div>
-      <div class="flex justify-between w-[251px]">
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-      </div>
-      <div class="flex items-center gap-2">
-        <img class="w-6" src="@/assets/img/icon-warning.svg" />
-        <p class="text-[--grey]">Предупреждение об ответственности</p>
-      </div>
+      <a href="#" rel="noopener noreferrer" target="_blank">
+        <div class="flex items-center gap-2">
+          <img class="w-6" src="@/assets/img/icon-warning.svg" />
+          <p class="text-[--grey] hover:text-[#929395]">
+            Предупреждение об ответственности
+          </p>
+        </div>
+      </a>
     </div>
     <div>
       <img src="@/assets/img/glob.svg" />
@@ -88,24 +72,39 @@
 </template>
 
 <script setup>
+import SocialIcons from "@/components/base/SocialIcons.vue";
+import ScanningPopup from "@/components/popups/ScanningPopup.vue";
+import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
+import AuthPopup from "@/components/popups/AuthPopup.vue";
 import { useRouter } from "vue-router";
 import { useLoginForm } from "@/use/login-form";
 import { ref, computed } from "vue";
-import ScanningPopup from "@/components/popups/ScanningPopup.vue";
-import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 
 const router = useRouter();
 
 const registrationOverlay = ref(false);
-
-const overlayScanning = ref(false);
+const authOverlay = ref(false);
+const scanningOverlay = ref(false);
 
 const closePopup = () => {
-  registrationOverlay.value = !registrationOverlay.value;
+  registrationOverlay.value = false;
 };
 
 const closeScanningPopup = () => {
-  overlayScanning.value = !overlayScanning.value;
+  scanningOverlay.value = false;
+};
+
+const closeAuthPopup = () => {
+  authOverlay.value = false;
+};
+
+const enterToAuth = () => {
+  registrationOverlay.value = false;
+  authOverlay.value = true;
+};
+const enterToRegistration = () => {
+  authOverlay.value = false;
+  registrationOverlay.value = true;
 };
 
 const isLoading = ref(false);
