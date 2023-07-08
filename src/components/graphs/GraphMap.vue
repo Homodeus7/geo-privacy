@@ -28,8 +28,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { VueFlow, useVueFlow, Position } from "@vue-flow/core";
+import { Position, VueFlow, useVueFlow } from "@vue-flow/core";
+import { onMounted, ref } from "vue";
 import CustomNode from "./CustomNode.vue";
 
 const X_1 = 30;
@@ -199,7 +199,7 @@ const initialNodes = ref([
   },
 ]);
 
-const { addEdges, nodesDraggable, elementsSelectable, panOnDrag } = useVueFlow({
+const { addEdges, elementsSelectable } = useVueFlow({
   nodes: initialNodes,
   defaultZoom: 1,
   maxZoom: 1,

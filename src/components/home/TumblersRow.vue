@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 
 const tumblers = reactive([
   { link: "#", name: "Открытые порты", value: 1, id: 0, active: false },
