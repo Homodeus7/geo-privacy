@@ -4,7 +4,10 @@
       v-for="tumbler in tumblers"
       :key="tumbler.id"
       class="text-none text-white tumb"
-      color="#2D2E33"
+      :class="{
+        'active-tumb': tumbler.active,
+        'inactive-tumb': !tumbler.active,
+      }"
       height="49"
       padding-left="0"
       padding-right="0"
@@ -25,8 +28,6 @@
 <script setup>
 import { reactive, ref } from "vue";
 
-const active = ref(false);
-
 const tumblers = reactive([
   { link: "#", name: "Открытые порты", value: 1, id: 0, active: false },
   { link: "#", name: "Найдено CVE", value: 10, id: 1, active: false },
@@ -36,10 +37,6 @@ const tumblers = reactive([
   { link: "#", name: "Связанные IP адреса", value: 1, id: 5, active: false },
   { link: "#", name: "Связанные URL", value: 1, id: 6, active: false },
 ]);
-
-const onTumbler = (id) => {
-  active.value = !active.value;
-};
 </script>
 
 <style lang="scss">
@@ -48,5 +45,12 @@ const onTumbler = (id) => {
   @media (min-width: 1568px) {
     font-size: 14px;
   }
+}
+.active-tumb {
+  background-color: #c74b24;
+}
+
+.inactive-tumb {
+  background-color: #2d2e33;
 }
 </style>

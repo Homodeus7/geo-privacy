@@ -1,53 +1,35 @@
 <template>
-  <div class="flex justify-between pb-14">
-    <div class="flex flex-col items-center">
-      <div class="flex items-center gap-10">
-        <v-btn
-          density="compact"
-          icon="mdi-plus"
-          class="self-center"
-          variant="plain"
-          @click="active = !active"
-        >
-          <img src="@/assets/img/icon-left-arrow.svg" />
-        </v-btn>
-
-        <p class="font-medium text-3xl">Результаты сканирования</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <img src="@/assets/img/icon-refresh.svg" />
-        <p class="font-medium text-[--grey] lowercase">последнее обновление</p>
-        <p class="font-medium">18.12.2023</p>
+  <div class="flex justify-between pb-3">
+    <div class="flex gap-10 pt-2">
+      <v-btn
+        density="compact"
+        icon="mdi-plus"
+        variant="plain"
+        @click="active = !active"
+      >
+        <img src="@/assets/img/icon-left-arrow.svg" />
+      </v-btn>
+      <div class="flex flex-col gap-2">
+        <h1 class="font-medium text-3xl">Результаты сканирования</h1>
+        <div class="flex gap-2">
+          <img src="@/assets/img/icon-refresh.svg" />
+          <p class="font-medium text-[--grey] lowercase">
+            последнее обновление
+          </p>
+          <p class="font-medium">18.12.2023</p>
+        </div>
       </div>
     </div>
     <div class="flex gap-8 items-end">
       <div class="flex gap-2">
         <p class="font-medium text-[--grey] lowercase">Сохранить отчет</p>
-        <v-btn
-          theme="dark"
-          size="small"
-          rounded="0"
-          class="tumb"
-          color="#2D2E33"
-        >
+        <v-btn theme="dark" size="small" class="tumb" color="#2D2E33">
           PDF
         </v-btn>
-        <v-btn
-          theme="dark"
-          size="small"
-          rounded="0"
-          class="tumb"
-          color="#2D2E33"
-        >
+        <v-btn theme="dark" size="small" class="tumb" color="#2D2E33">
           XLS
         </v-btn>
-        <v-btn
-          theme="dark"
-          size="small"
-          rounded="0"
-          class="tumb"
-          color="#2D2E33"
-        >
+        <v-btn theme="dark" size="small" class="tumb" color="#2D2E33">
           HTML
         </v-btn>
       </div>
