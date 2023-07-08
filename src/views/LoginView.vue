@@ -16,39 +16,68 @@
     </v-btn>
     <registration-popup v-model="registrationOverlay" @click="closePopup" />
   </div>
-  <div
-    class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] flex-auto relative"
-  >
-    <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
-    <h1 class="font-medium text-[48px] leading-[58px]">
-      Инновационная технология глубокого изучения геоданных
-    </h1>
-    <p class="font-normal text-[20px] leading-[28px]">
-      Теоретические и методические основы разработки и внедрения инноваций GIS-
-      технологий при визуализации и геопространственном моделировании базы
-      данных объектов недвижимости
-    </p>
+  <div class="flex">
+    <div
+      class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] flex-auto relative"
+    >
+      <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
+      <h1 class="font-medium text-[48px] leading-[58px]">
+        Инновационная технология глубокого изучения геоданных
+      </h1>
+      <p class="font-normal text-[20px] leading-[28px]">
+        Теоретические и методические основы разработки и внедрения инноваций
+        GIS- технологий при визуализации и геопространственном моделировании
+        базы данных объектов недвижимости
+      </p>
+      <div>
+        <v-btn
+          theme="dark"
+          height="52"
+          rounded="xs"
+          class="text-none z-10"
+          color="#C74B24"
+          @click="overlayScanning = !overlayScanning"
+          >Провести сканирование</v-btn
+        >
+        <ScanningPopup v-model="overlayScanning" @click="closeScanningPopup" />
+      </div>
+      <div class="flex justify-between w-[251px]">
+        <v-btn
+          theme="dark"
+          rounded="0"
+          height="36"
+          width="36"
+          icon="mdi"
+        ></v-btn>
+        <v-btn
+          theme="dark"
+          rounded="0"
+          height="36"
+          width="36"
+          icon="mdi"
+        ></v-btn>
+        <v-btn
+          theme="dark"
+          rounded="0"
+          height="36"
+          width="36"
+          icon="mdi"
+        ></v-btn>
+        <v-btn
+          theme="dark"
+          rounded="0"
+          height="36"
+          width="36"
+          icon="mdi"
+        ></v-btn>
+      </div>
+      <div class="flex items-center gap-2">
+        <img class="w-6" src="@/assets/img/icon-warning.svg" />
+        <p class="text-[--grey]">Предупреждение об ответственности</p>
+      </div>
+    </div>
     <div>
-      <v-btn
-        theme="dark"
-        height="52"
-        rounded="xs"
-        class="text-none z-10"
-        color="#C74B24"
-        @click="overlayScanning = !overlayScanning"
-        >Провести сканирование</v-btn
-      >
-      <ScanningPopup v-model="overlayScanning" @click="closeScanningPopup" />
-    </div>
-    <div class="flex justify-between w-[251px]">
-      <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-      <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-      <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-      <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-    </div>
-    <div class="flex items-center gap-2">
-      <img class="w-6" src="@/assets/img/icon-warning.svg" />
-      <p class="text-[--grey]">Предупреждение об ответственности</p>
+      <img src="@/assets/img/glob.svg" />
     </div>
   </div>
 
