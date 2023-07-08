@@ -13,9 +13,9 @@
       </div>
       <v-text-field
         theme="dark"
-        variant="solo"
+        variant="underlined"
         placeholder="192.168.255.255"
-        class="min-w-[190px] pt-8"
+        class="min-w-[190px] pt-8 text"
       ></v-text-field>
       <div
         class="flex item-center gap-2 mb-5 px-4 py-[10px] border-[1px] border-[--green]"
@@ -33,6 +33,7 @@
       <v-expand-transition>
         <div v-if="active" class="flex flex-col gap-4 pb-[16px]">
           <v-text-field
+            bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
@@ -41,6 +42,7 @@
             class="min-w-[190px]"
           ></v-text-field>
           <v-text-field
+            bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
@@ -49,6 +51,7 @@
             class="min-w-[190px]"
           ></v-text-field>
           <v-text-field
+            bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
@@ -57,6 +60,7 @@
             class="min-w-[190px]"
           ></v-text-field>
           <v-text-field
+            bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
@@ -65,6 +69,7 @@
             class="min-w-[190px]"
           ></v-text-field>
           <v-text-field
+            bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
@@ -96,3 +101,12 @@ const clickOnButton = () => {
   emit("click");
 };
 </script>
+
+<style lang="scss">
+.text input::placeholder {
+  color: white;
+  opacity: 1;
+  font-size: 20px;
+  text-align: center;
+}
+</style>

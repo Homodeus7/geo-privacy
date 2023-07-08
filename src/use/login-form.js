@@ -7,9 +7,12 @@ export function useLoginForm() {
     yup
       .string()
       .trim()
-      .required("Please enter email")
-      .email()
-      .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "Please enter email")
+      .required("Пожалуйста, введите электронную почту")
+      .email("Пожалуйста, введите электронную почту")
+      .matches(
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+        "Пожалуйста, введите электронную почту"
+      )
   );
 
   const { value: password, errorMessage: pError } = useField(
@@ -17,9 +20,9 @@ export function useLoginForm() {
     yup
       .string()
       .trim()
-      .required("Please enter password")
-      .matches(/\w*[A-Z]\w*/, "Password must have a uppercase letter")
-      .min(8, ({ min }) => `Password must be at least ${min} characters`)
+      .required("Пожалуйста, введите пароль")
+      .matches(/\w*[A-Z]\w*/, "Пароль должен иметь заглавную букву")
+      .min(8, ({ min }) => `Пароль должен содержать не менее ${min} символов`)
   );
 
   return {
