@@ -17,17 +17,15 @@
     <registration-popup v-model="registrationOverlay" @click="closePopup" />
   </div>
   <div class="flex">
-    <div
-      class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] flex-auto relative"
-    >
+    <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] flex-auto relative">
       <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
       <h1 class="font-medium text-[48px] leading-[58px]">
         Инновационная технология глубокого изучения геоданных
       </h1>
       <p class="font-normal text-[20px] leading-[28px]">
-        Теоретические и методические основы разработки и внедрения инноваций
-        GIS- технологий при визуализации и геопространственном моделировании
-        базы данных объектов недвижимости
+        Теоретические и методические основы разработки и внедрения инноваций GIS-
+        технологий при визуализации и геопространственном моделировании базы данных
+        объектов недвижимости
       </p>
       <div>
         <v-btn
@@ -42,42 +40,19 @@
         <ScanningPopup v-model="overlayScanning" @click="closeScanningPopup" />
       </div>
       <div class="flex justify-between w-[251px]">
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
-        <v-btn
-          theme="dark"
-          rounded="0"
-          height="36"
-          width="36"
-          icon="mdi"
-        ></v-btn>
+        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
+        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
+        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
+        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
       </div>
       <div class="flex items-center gap-2">
         <img class="w-6" src="@/assets/img/icon-warning.svg" />
         <p class="text-[--grey]">Предупреждение об ответственности</p>
       </div>
     </div>
-    <div>
-      <img src="@/assets/img/glob.svg" />
+    <div class="relative">
+      <img src="@/assets/img/glob.svg" class="w-full" />
+      <GlobImage class="absolute -top-20 left-0 w-[95%]" />
     </div>
   </div>
 
@@ -93,6 +68,7 @@ import { useLoginForm } from "@/use/login-form";
 import { ref, computed } from "vue";
 import ScanningPopup from "@/components/popups/ScanningPopup.vue";
 import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
+import GlobImage from "@/components/base/GlobImage.vue";
 
 const router = useRouter();
 

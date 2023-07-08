@@ -51,24 +51,13 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 
 const links = reactive([
   { link: "/test", name: "Позицианирование проекта" },
   { link: "/", name: "Профили доменов" },
   { link: "/location", name: "Обзор локации" },
 ]);
-
-const loaded = ref(false);
-const loading = ref(false);
-
-const onClick = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-    loading.value = true;
-  }, 2000);
-};
 </script>
 
 <style lang="scss" scoped>
