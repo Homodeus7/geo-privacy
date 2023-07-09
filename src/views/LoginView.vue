@@ -27,6 +27,7 @@
   </div>
   <div class="flex flex-auto">
     <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] relative">
+
       <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
       <h1 class="font-medium text-[48px] leading-[58px]">
         Инновационная технология глубокого изучения геоданных
@@ -62,9 +63,16 @@
         </div>
       </a>
     </div>
-    <div class="relative mt-16 z-[-1]">
+
+    <div class="relative mt-16 z-[-1] glob-block">
       <img src="@/assets/img/glob.svg" class="w-full" />
-      <GlobImage class="absolute -top-20 left-0 w-[95%]" />
+      <GlobImage class="absolute -top-20 left-0 glob-lines" />
+      <div class="absolute -top-20 left-0 glob-lines">
+        <div class="w-[4px] h-[4px] rounded-full bg-[#ffffff90] dot"></div>
+        <div
+          class="w-[4px] h-[4px] rounded-full bg-[#ffffff] top-[132px] pulse left-[92px]"
+        ></div>
+      </div>
     </div>
   </div>
 
@@ -136,6 +144,7 @@ const log = () => {
 </script>
 
 <style lang="scss" scoped>
+
 .dashed {
   color: white;
   border-bottom: 1px dashed white;
@@ -183,5 +192,54 @@ const log = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
+
+.glob-block {
+  --block-width: 675px;
+  width: 100%;
+  max-width: var(--block-width);
+  .glob-lines {
+    width: 95%;
+  }
+}
+
+.dot {
+  top: 124px;
+  left: 90px;
+  animation: linear 5s orbita infinite;
+}
+
+@keyframes orbita {
+  0% {
+  }
+  25% {
+    top: 136px;
+    left: 100px;
+  }
+  50% {
+  }
+  75% {
+    top: 144px;
+    left: 82px;
+  }
+  100% {
+  }
+}
+
+@keyframes smooth {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.9;
+    scale: 1.6;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.pulse {
+  animation: linear smooth 2s infinite;
+
 }
 </style>
