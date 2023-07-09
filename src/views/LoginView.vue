@@ -1,42 +1,41 @@
 <template>
-  <div class="pt-[50px] flex gap-12 justify-end">
-    <v-btn
-      variant="outlined"
-      color="#E09423"
-      class="text-none font-medium hover:text-[--green]"
-      @click="authOverlay = !authOverlay"
-      >Вход
-    </v-btn>
+  <div class="pt-[50px] flex gap-12 justify-end items-center">
+    <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
+      <p class="dashed">Вход</p>
+    </div>
     <AuthPopup
       v-model="authOverlay"
       @click="closeAuthPopup"
       @onEnter="enterToRegistration"
     />
-    <v-btn
-      variant="outlined"
-      color="#E09423"
-      class="text-none font-medium hover:text-[--green]"
-      @click="registrationOverlay = !registrationOverlay"
-      >Регистрация
-    </v-btn>
+    <div class="border-gradient">
+      <v-btn
+        variant="outlined"
+        rounded="xl"
+        width="158"
+        height="55"
+        class="text-none border-none text-white"
+        @click="registrationOverlay = true"
+        >Регистрация
+      </v-btn>
+    </div>
     <RegistrationPopup
       v-model="registrationOverlay"
       @click="closePopup"
       @onEnter="enterToAuth"
     />
   </div>
-  <div class="flex">
-    <div
-      class="flex flex-col gap-[50px] w-full max-w-[675px] pt-[75px] flex-auto relative"
-    >
+  <div class="flex flex-auto">
+    <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] relative">
+
       <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
       <h1 class="font-medium text-[48px] leading-[58px]">
         Инновационная технология глубокого изучения геоданных
       </h1>
       <p class="font-normal text-[20px] leading-[28px]">
-        Теоретические и методические основы разработки и внедрения инноваций GIS-
-        технологий при визуализации и геопространственном моделировании базы данных
-        объектов недвижимости
+        Теоретические и методические основы разработки и внедрения инноваций
+        GIS- технологий при визуализации и геопространственном моделировании
+        базы данных объектов недвижимости
       </p>
       <div class="flex flex-col gap-[50px] max-w-[258px]">
         <v-btn
@@ -45,22 +44,15 @@
           rounded="xs"
           class="text-none z-10"
           color="#C74B24"
-          @click="scanningOverlay = !scanningOverlay"
+          @click="registrationOverlay = true"
           >Провести сканирование</v-btn
         >
-
-        <ScanningPopup v-model="scanningOverlay" @click="closeScanningPopup" />
+        <RegistrationPopup
+          v-model="registrationOverlay"
+          @click="closePopup"
+          @onEnter="enterToAuth"
+        />
         <SocialIcons />
-      </div>
-      <div class="flex justify-between w-[251px]">
-        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-        <v-btn theme="dark" rounded="0" height="36" width="36" icon="mdi"></v-btn>
-      </div>
-      <div class="flex items-center gap-2">
-        <img class="w-6" src="@/assets/img/icon-warning.svg" />
-        <p class="text-[--grey]">Предупреждение об ответственности</p>
       </div>
       <a href="#" rel="noopener noreferrer" target="_blank">
         <div class="flex items-center gap-2">
@@ -71,8 +63,9 @@
         </div>
       </a>
     </div>
-    <div class="relative glob-block">
-      <img src="@/assets/img/glob.svg" />
+
+    <div class="relative mt-16 z-[-1] glob-block">
+      <img src="@/assets/img/glob.svg" class="w-full" />
       <GlobImage class="absolute -top-20 left-0 glob-lines" />
       <div class="absolute -top-20 left-0 glob-lines">
         <div class="w-[4px] h-[4px] rounded-full bg-[#ffffff90] dot"></div>
@@ -85,13 +78,20 @@
 
   <div class="h-[80px] flex items-center justify-between">
     <div class="text-[--grey]">Geo Privacy, 2023</div>
-    <div class="text-[--grey]">Geo Privacy, 2023</div>
+    <div class="text-[--grey] flex gap-8">
+      <a href="#" rel="noopener noreferrer" target="_blank"
+        >Предупреждение об ответственности</a
+      >
+      <a href="#" rel="noopener noreferrer" target="_blank">Карта сайта</a>
+      <a href="#" rel="noopener noreferrer" target="_blank"
+        >Вход и регистрация</a
+      >
+    </div>
   </div>
 </template>
 
 <script setup>
 import SocialIcons from "@/components/base/SocialIcons.vue";
-import ScanningPopup from "@/components/popups/ScanningPopup.vue";
 import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import { useRouter } from "vue-router";
@@ -99,19 +99,13 @@ import { useLoginForm } from "@/use/login-form";
 import { ref, computed } from "vue";
 import GlobImage from "@/components/base/GlobImage.vue";
 
-
 const router = useRouter();
 
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
-const scanningOverlay = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
-};
-
-const closeScanningPopup = () => {
-  scanningOverlay.value = false;
 };
 
 const closeAuthPopup = () => {
@@ -150,6 +144,55 @@ const log = () => {
 </script>
 
 <style lang="scss" scoped>
+
+.dashed {
+  color: white;
+  border-bottom: 1px dashed white;
+}
+.border-gradient {
+  --border-width: 2px;
+  --border-radius: 30px;
+  --color-1: #e09423;
+  --color-2: #e3562a;
+}
+
+.border-gradient {
+  background: linear-gradient(to right, #e09423, #e3562a),
+    linear-gradient(to right, #e09423, #e3562a);
+  background-position: 26px 0, 26px 100%;
+  background-repeat: no-repeat;
+  background-size: calc(
+      100% - var(--border-radius) - var(--border-radius) + 6px
+    )
+    var(--border-width);
+  border: none;
+}
+
+.border-gradient:before,
+.border-gradient:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: var(--border-radius);
+  top: 0;
+  bottom: 0;
+}
+
+.border-gradient:before {
+  left: 0;
+  border: var(--border-width) solid var(--color-1);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-right-color: transparent;
+}
+
+.border-gradient:after {
+  right: 0;
+  border: var(--border-width) solid var(--color-2);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  border-left-color: transparent;
+
 .glob-block {
   --block-width: 675px;
   width: 100%;
@@ -197,5 +240,6 @@ const log = () => {
 
 .pulse {
   animation: linear smooth 2s infinite;
+
 }
 </style>

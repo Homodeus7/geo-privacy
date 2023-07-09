@@ -13,7 +13,7 @@
     </v-btn>
     <v-btn
       theme="dark"
-      rounded="0"
+      rounded="sm"
       height="36"
       width="36"
       icon="mdi"
@@ -24,7 +24,7 @@
     </v-btn>
     <v-btn
       theme="dark"
-      rounded="0"
+      rounded="sm"
       height="36"
       width="36"
       icon="mdi"
@@ -35,7 +35,7 @@
     </v-btn>
     <v-btn
       theme="dark"
-      rounded="0"
+      rounded="sm"
       height="36"
       width="36"
       icon="mdi"
