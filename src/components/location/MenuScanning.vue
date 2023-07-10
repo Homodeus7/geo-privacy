@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between pb-[15px]">
     <div class="flex gap-4">
       <img class="w-10" src="@/assets/img/icon-exploit.svg" />
       <p class="font-medium text-3xl">Найденные уязвимости</p>

@@ -1,7 +1,9 @@
 <template>
-  <MenuScanning />
-  <Acharts />
-  <ScanningDangers />
+  <div>
+    <MenuScanning />
+    <Acharts />
+    <ScanningDangers />
+  </div>
 </template>
 
 <script setup>
