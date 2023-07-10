@@ -27,7 +27,6 @@
   </div>
   <div class="flex flex-auto">
     <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] relative">
-
       <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
       <h1 class="font-medium text-[48px] leading-[58px]">
         Инновационная технология глубокого изучения геоданных
@@ -57,7 +56,7 @@
       <a href="#" rel="noopener noreferrer" target="_blank">
         <div class="flex items-center gap-2">
           <img class="w-6" src="@/assets/img/icon-warning.svg" />
-          <p class="text-[--grey] hover:text-[#929395]">
+          <p class="text-[--grey] hover:opacity-80">
             Предупреждение об ответственности
           </p>
         </div>
@@ -78,14 +77,18 @@
 
   <div class="h-[80px] flex items-center justify-between">
     <div class="text-[--grey]">Geo Privacy, 2023</div>
-    <div class="text-[--grey] flex gap-8">
+    <div class="flex gap-8">
       <a href="#" rel="noopener noreferrer" target="_blank"
-        >Предупреждение об ответственности</a
+        ><p class="text-[--grey] hover:opacity-80">
+          Предупреждение об ответственности
+        </p></a
       >
-      <a href="#" rel="noopener noreferrer" target="_blank">Карта сайта</a>
       <a href="#" rel="noopener noreferrer" target="_blank"
-        >Вход и регистрация</a
-      >
+        ><p class="text-[--grey] hover:opacity-80">Карта сайта</p>
+      </a>
+      <a href="#" rel="noopener noreferrer" target="_blank">
+        <p class="text-[--grey] hover:opacity-80">Вход и регистрация</p>
+      </a>
     </div>
   </div>
 </template>
@@ -144,7 +147,6 @@ const log = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .dashed {
   color: white;
   border-bottom: 1px dashed white;
@@ -192,6 +194,7 @@ const log = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
+}
 
 .glob-block {
   --block-width: 675px;
@@ -240,6 +243,5 @@ const log = () => {
 
 .pulse {
   animation: linear smooth 2s infinite;
-
 }
 </style>

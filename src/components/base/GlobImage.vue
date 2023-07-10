@@ -752,48 +752,56 @@
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M159.971 83.3595L126.071 123.069L180.256 147.38L159.971 83.3595Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M629.539 83.5582L596.052 62.8453L520.727 71.8224L629.539 83.5582Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M702.521 236.397L727.75 288.172L737.342 210.433L702.521 236.397Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M691.159 665.521L632.146 719.754L638.26 611.403L691.159 665.521Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M592.509 734.86L520.246 782.718L579.619 687.744L592.509 734.86Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M609.451 545.329L554.186 607.111L492.348 562.425L609.451 545.329Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M478.438 16.0445L381.804 1.66617L425.332 98.6899L478.438 16.0445Z"
         stroke="#3D4452"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="animate-pulse"
       />
       <path
         d="M312.461 14.3315L239.138 35.8353L250.784 61.6084L312.461 14.3315Z"
