@@ -23,15 +23,19 @@ import { reactive } from "vue";
 const series = reactive([
   {
     name: "от 0 до 3.0",
-    data: [2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4],
+    data: [2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4, 2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4],
   },
   {
     name: "от 4.0 до 7.0",
-    data: [5, 5.5, 6, 7, 5, 6, 5, 6, 7, 8, 7],
+    data: [
+      5, 5.5, 6, 7, 5, 6, 5, 6, 7, 8, 7, 5, 5.5, 6, 7, 5, 6, 5, 6, 7, 8, 7,
+    ],
   },
   {
     name: "от 8.0 до 10.0",
-    data: [6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 10],
+    data: [
+      6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 10, 6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 10,
+    ],
   },
 ]);
 
@@ -39,7 +43,10 @@ const chartOptions = reactive({
   chart: {
     type: "area",
     height: 420,
-    stacked: true,
+    stacked: false,
+  },
+  markers: {
+    size: 0,
   },
   animations: {
     enabled: true,
@@ -59,7 +66,7 @@ const chartOptions = reactive({
     enabled: false,
   },
   stroke: {
-    // curve: "smooth",
+    curve: "smooth",
     width: "2",
   },
   fill: {
@@ -70,17 +77,26 @@ const chartOptions = reactive({
       stops: [0, 80, 100],
     },
   },
-
   legend: {
     position: "top",
     horizontalAlign: "left",
+    offsetX: 17,
+    offsetY: 15,
   },
   xaxis: {
-    lines: {
-      show: false,
-    },
     type: "numbers",
     categories: [
+      "21 TCP",
+      "22 TCP",
+      "23 TCP",
+      "24 TCP",
+      "25 TCP",
+      "26 TCP",
+      "76 TCP",
+      "355 TCP",
+      "6783 TCP",
+      "6783 TCP",
+      "6783 TCP",
       "21 TCP",
       "22 TCP",
       "23 TCP",
@@ -98,11 +114,20 @@ const chartOptions = reactive({
     lines: {
       show: false,
     },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
   },
   grid: {
     borderColor: "#1e1f23",
     strokeDashArray: 1,
     opacity: 0,
+  },
+  tooltip: {
+    shared: false,
   },
 });
 </script>
@@ -142,14 +167,9 @@ const chartOptions = reactive({
 }
 #chart .apexcharts-legend {
   flex-direction: column;
-  padding-top: 10px;
-  padding-left: 50px;
 }
 
 #chart .apexcharts-xaxis-tick {
   stroke: none;
-}
-#chart #SvgjsLine1455 {
-  stroke: #26282d;
 }
 </style>
