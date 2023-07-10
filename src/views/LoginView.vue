@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[50px] flex gap-12 justify-end items-center">
+  <div class="pt-[20px] flex gap-12 justify-end items-center">
     <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
       <p class="dashed">Вход</p>
     </div>
@@ -26,7 +26,7 @@
     />
   </div>
   <div class="flex flex-auto">
-    <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] relative">
+    <div class="flex flex-col gap-[40px] max-w-[675px] pt-[75px] relative">
       <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
       <h1 class="font-medium text-[48px] leading-[58px]">
         Инновационная технология глубокого изучения геоданных
@@ -36,7 +36,7 @@
         GIS- технологий при визуализации и геопространственном моделировании
         базы данных объектов недвижимости
       </p>
-      <div class="flex flex-col gap-[50px] max-w-[258px]">
+      <div class="flex flex-col gap-[40px] max-w-[258px]">
         <v-btn
           theme="dark"
           height="52"
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <div class="h-[80px] flex items-center justify-between">
+  <div class="h-[70px] flex items-center justify-between">
     <div class="text-[--grey]">Geo Privacy, 2023</div>
     <div class="flex gap-8">
       <a href="#" rel="noopener noreferrer" target="_blank"

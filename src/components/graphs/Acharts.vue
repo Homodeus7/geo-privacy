@@ -1,8 +1,9 @@
 <template>
-  <div class="relative w-full bg-[--black-middle] rounded-md pt-4">
+  <div class="relative w-full bg-[--black-middle] rounded-md">
     <div class="z-10">
       <apexchart
         id="chart"
+        class="mr-[-10px]"
         type="area"
         height="420"
         :options="chartOptions"
@@ -11,14 +12,29 @@
       </apexchart>
     </div>
     <img
-      class="absolute h-[480px] w-[1180px] top-0 left-11 z-0"
+      class="absolute h-[480px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
       src="@/assets/img/pattern-graph.svg"
     />
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import RatingCard from "@/components/base/RatingCard.vue";
+
+const rating = RatingCard;
+
+const cves = ref([
+  { title: "CVE-2021-44228" },
+  { title: "CVE-2021-44228" },
+  { title: "CVE-2021-44228" },
+]);
+
+const dates = ref([
+  { title: "21.03.2023" },
+  { title: "21.03.2023" },
+  { title: "21.03.2023" },
+]);
 
 const series = reactive([
   {
@@ -82,6 +98,10 @@ const chartOptions = reactive({
     horizontalAlign: "left",
     offsetX: 17,
     offsetY: 15,
+    markers: {
+      width: 8,
+      height: 8,
+    },
   },
   xaxis: {
     type: "numbers",
@@ -128,11 +148,52 @@ const chartOptions = reactive({
   },
   tooltip: {
     shared: false,
+    custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+      return (
+        '<div class="arrow_box">' +
+        '<span class="arrow_box_title">' +
+        cves.value.map((i) => i.title)[0] +
+        "</span>" +
+        '<span class="arrow_box_date">' +
+        dates.value.map((i) => i.title)[0] +
+        "</span>" +
+        "<span>" +
+        Math.floor(series[seriesIndex][dataPointIndex] / 2) +
+        "</span>" +
+        "</div>"
+      );
+    },
   },
+  // tooltip: {
+  //   shared: false,
+  //   style: {
+  //     fontSize: "16px",
+  //     fontWeight: "medium",
+  //   },
+  //   onItemHover: {
+  //     highlightDataSeries: false,
+  //   },
+  // },
 });
 </script>
 
 <style lang="scss">
+.arrow_box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.arrow_box_title {
+  font-size: 16px !important;
+  font-weight: 500;
+}
+
+.arrow_box_date {
+  font-size: 10;
+  font-weight: 500;
+}
 #chart .apexcharts-tooltip {
   color: white;
   text-align: center;
@@ -162,14 +223,25 @@ const chartOptions = reactive({
 }
 
 #chart .apexcharts-menu-item:hover {
-  color: #23a04d;
-  background-color: #26282d;
+  background-color: rgb(53, 56, 59, 0.8);
 }
 #chart .apexcharts-legend {
   flex-direction: column;
 }
+#chart .apexcharts-legend-text {
+  color: white !important;
+  font-weight: bold !important;
+}
 
+#chart .apexcharts-legend-series {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
 #chart .apexcharts-xaxis-tick {
   stroke: none;
+}
+#chart .apexcharts-toolbar {
+  display: none;
 }
 </style>
