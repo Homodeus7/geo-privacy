@@ -8,6 +8,7 @@
       icon="mdi"
       color="transparent"
       class="social items-center"
+      @click="clickOnButton"
     >
       <img class="w-5" src="@/assets/img/icon-twitter.svg" />
     </v-btn>
@@ -19,6 +20,7 @@
       icon="mdi"
       color="transparent"
       class="social items-center"
+      @click="clickOnText"
     >
       <img class="w-6" src="@/assets/img/icon-vk.svg" />
     </v-btn>
@@ -46,6 +48,17 @@
     </v-btn>
   </div>
 </template>
+
+<script setup>
+const emit = defineEmits(["openToQr", "openToText"]);
+
+const clickOnButton = () => {
+  emit("openToQr");
+};
+const clickOnText = () => {
+  emit("openToText");
+};
+</script>
 
 <style lang="scss" scoped>
 .social {

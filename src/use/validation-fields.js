@@ -1,7 +1,7 @@
 import { useField } from "vee-validate";
 import * as yup from "yup";
 
-export function useLoginForm() {
+export function useValidationFields() {
   const { value: email, errorMessage: eError } = useField(
     "email",
     yup
@@ -25,10 +25,21 @@ export function useLoginForm() {
       .min(8, ({ min }) => `Пароль должен содержать не менее ${min} символов`)
   );
 
+  const { value: verification, errorMessage: vError } = useField(
+    "password",
+    yup
+      .string()
+      .trim()
+      .required("Пожалуйста, введите код")
+      .min(6, ({ min }) => `Код должен содержать ${min} символов`)
+  );
+
   return {
     email,
     password,
     eError,
     pError,
+    verification,
+    vError,
   };
 }
