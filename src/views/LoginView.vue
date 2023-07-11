@@ -47,11 +47,6 @@
             @click="registrationOverlay = true"
             >Провести сканирование</v-btn
           >
-          <RegistrationPopup
-            v-model="registrationOverlay"
-            @click="closePopup"
-            @onEnter="enterToAuth"
-          />
           <SocialIcons />
         </div>
         <a href="#" rel="noopener noreferrer" target="_blank">
