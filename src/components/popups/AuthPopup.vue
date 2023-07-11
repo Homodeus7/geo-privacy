@@ -107,12 +107,12 @@
 <script setup>
 import SocialIcons from "@/components/base/SocialIcons.vue";
 import { useRouter } from "vue-router";
-import { useLoginForm } from "@/use/login-form";
+import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
 const router = useRouter();
 const visible = ref(false);
-const valid = { ...useLoginForm() };
+const valid = { ...useValidationFields() };
 
 const isValid = computed(
   () =>

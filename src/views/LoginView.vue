@@ -4,11 +4,7 @@
       <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
         <p class="dashed">Вход</p>
       </div>
-      <AuthPopup
-        v-model="authOverlay"
-        @click="closeAuthPopup"
-        @onEnter="enterToRegistration"
-      />
+
       <div class="border-gradient">
         <v-btn
           variant="outlined"
@@ -20,11 +16,6 @@
           >Регистрация
         </v-btn>
       </div>
-      <RegistrationPopup
-        v-model="registrationOverlay"
-        @click="closePopup"
-        @onEnter="enterToAuth"
-      />
     </div>
     <div class="flex flex-auto">
       <div class="flex flex-col gap-[40px] max-w-[675px] pt-[75px] relative">
@@ -47,7 +38,10 @@
             @click="registrationOverlay = true"
             >Провести сканирование</v-btn
           >
-          <SocialIcons />
+          <SocialIcons
+            @openToQr="qrOverlay = true"
+            @openToText="textPopup = true"
+          />
         </div>
         <a href="#" rel="noopener noreferrer" target="_blank">
           <div class="flex items-center gap-2">
@@ -59,9 +53,9 @@
         </a>
       </div>
 
-      <div class="relative mt-16 z-[-1] glob-block left-28">
-        <GlobeTexture class="absolute w-[80%] left-6 -top-5" />
-        <GlobLines class="absolute -top-20 glob-lines" />
+      <div class="relative mt-6 z-[-1] glob-block left-36">
+        <GlobeTexture class="absolute w-[82%] left-6 -top-5" />
+        <GlobLines class="absolute w-[97%] -top-20" />
       </div>
     </div>
 
@@ -82,6 +76,18 @@
       </div>
     </div>
   </div>
+  <RegistrationPopup
+    v-model="registrationOverlay"
+    @click="closePopup"
+    @onEnter="enterToAuth"
+  />
+  <AuthPopup
+    v-model="authOverlay"
+    @click="closeAuthPopup"
+    @onEnter="enterToRegistration"
+  />
+  <QRPopup v-model="qrOverlay" @click="closeQRPopup" />
+  <TextPopup v-model="textPopup" @click="closeTextPopup" />
 </template>
 
 <script setup>
@@ -90,14 +96,14 @@ import GlobeTexture from "@/components/base/GlobeTexture.vue";
 import SocialIcons from "@/components/base/SocialIcons.vue";
 import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
-import { useRouter } from "vue-router";
-import { useLoginForm } from "@/use/login-form";
-import { ref, computed } from "vue";
+import QRPopup from "@/components/popups/QRPopup.vue";
+import TextPopup from "@/components/popups/TextPopup.vue";
+import { ref } from "vue";
 
-const router = useRouter();
-
+const qrOverlay = ref(false);
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
+const textPopup = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
@@ -107,6 +113,14 @@ const closeAuthPopup = () => {
   authOverlay.value = false;
 };
 
+const closeQRPopup = () => {
+  qrOverlay.value = false;
+};
+
+const closeTextPopup = () => {
+  textPopup.value = false;
+};
+
 const enterToAuth = () => {
   registrationOverlay.value = false;
   authOverlay.value = true;
@@ -114,27 +128,6 @@ const enterToAuth = () => {
 const enterToRegistration = () => {
   authOverlay.value = false;
   registrationOverlay.value = true;
-};
-
-const isLoading = ref(false);
-const valid = { ...useLoginForm() };
-
-const isValid = computed(
-  () =>
-    !!valid.email.value &&
-    !!valid.password.value &&
-    !valid.eError.value &&
-    !valid.pError.value
-);
-
-const log = () => {
-  if (isValid.value) {
-    isLoading.value = true;
-    setTimeout(() => {
-      isLoading.value = false;
-      router.push("/");
-    }, 2000);
-  }
 };
 </script>
 
@@ -192,8 +185,5 @@ const log = () => {
   --block-width: 675px;
   width: 100%;
   max-width: var(--block-width);
-  .glob-lines {
-    width: 95%;
-  }
 }
 </style>

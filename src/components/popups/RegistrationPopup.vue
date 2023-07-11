@@ -1,5 +1,5 @@
 <template>
-  <v-overlay v-model="overlay" class="flex items-center justify-center">
+  <v-overlay class="flex items-center justify-center">
     <div class="p-8 bg-[--black-middle] flex-col relative rounded-md w-[360px]">
       <div class="absolute right-5 top-5">
         <v-btn
@@ -120,14 +120,14 @@
 <script setup>
 import SocialIcons from "../base/SocialIcons.vue";
 import { useRouter } from "vue-router";
-import { useLoginForm } from "@/use/login-form";
+import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
 const router = useRouter();
 const visible = ref(false);
 const terms = ref(false);
 const isLoading = ref(false);
-const valid = { ...useLoginForm() };
+const valid = { ...useValidationFields() };
 
 const isValid = computed(
   () =>
@@ -153,3 +153,4 @@ const enterAnotherPopup = () => {
 </script>
 
 <style lang="scss"></style>
+@/use/validation-fields
