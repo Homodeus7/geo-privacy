@@ -1,91 +1,90 @@
 <template>
-  <div class="pt-[50px] flex gap-12 justify-end items-center">
-    <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
-      <p class="dashed">Вход</p>
-    </div>
-    <AuthPopup
-      v-model="authOverlay"
-      @click="closeAuthPopup"
-      @onEnter="enterToRegistration"
-    />
-    <div class="border-gradient">
-      <v-btn
-        variant="outlined"
-        rounded="xl"
-        width="158"
-        height="55"
-        class="text-none border-none text-white"
-        @click="registrationOverlay = true"
-        >Регистрация
-      </v-btn>
-    </div>
-    <RegistrationPopup
-      v-model="registrationOverlay"
-      @click="closePopup"
-      @onEnter="enterToAuth"
-    />
-  </div>
-  <div class="flex flex-auto">
-    <div class="flex flex-col gap-[50px] max-w-[675px] pt-[75px] relative">
-
-      <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
-      <h1 class="font-medium text-[48px] leading-[58px]">
-        Инновационная технология глубокого изучения геоданных
-      </h1>
-      <p class="font-normal text-[20px] leading-[28px]">
-        Теоретические и методические основы разработки и внедрения инноваций
-        GIS- технологий при визуализации и геопространственном моделировании
-        базы данных объектов недвижимости
-      </p>
-      <div class="flex flex-col gap-[50px] max-w-[258px]">
+  <div class="flex flex-col justify-between h-[100vh]">
+    <div class="pt-[40px] flex gap-12 justify-end items-center">
+      <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
+        <p class="dashed">Вход</p>
+      </div>
+      <AuthPopup
+        v-model="authOverlay"
+        @click="closeAuthPopup"
+        @onEnter="enterToRegistration"
+      />
+      <div class="border-gradient">
         <v-btn
-          theme="dark"
-          height="52"
-          rounded="xs"
-          class="text-none z-10"
-          color="#C74B24"
+          variant="outlined"
+          rounded="xl"
+          width="158"
+          height="55"
+          class="text-none border-none text-white"
           @click="registrationOverlay = true"
-          >Провести сканирование</v-btn
-        >
-        <RegistrationPopup
-          v-model="registrationOverlay"
-          @click="closePopup"
-          @onEnter="enterToAuth"
-        />
-        <SocialIcons />
+          >Регистрация
+        </v-btn>
       </div>
-      <a href="#" rel="noopener noreferrer" target="_blank">
-        <div class="flex items-center gap-2">
-          <img class="w-6" src="@/assets/img/icon-warning.svg" />
-          <p class="text-[--grey] hover:text-[#929395]">
-            Предупреждение об ответственности
-          </p>
+      <RegistrationPopup
+        v-model="registrationOverlay"
+        @click="closePopup"
+        @onEnter="enterToAuth"
+      />
+    </div>
+    <div class="flex flex-auto">
+      <div class="flex flex-col gap-[40px] max-w-[675px] pt-[75px] relative">
+        <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
+        <h1 class="font-medium text-[48px] leading-[58px]">
+          Инновационная технология глубокого изучения геоданных
+        </h1>
+        <p class="font-normal text-[20px] leading-[28px]">
+          Теоретические и методические основы разработки и внедрения инноваций
+          GIS- технологий при визуализации и геопространственном моделировании
+          базы данных объектов недвижимости
+        </p>
+        <div class="flex flex-col gap-[40px] max-w-[258px]">
+          <v-btn
+            theme="dark"
+            height="52"
+            rounded="xs"
+            class="text-none z-10"
+            color="#C74B24"
+            @click="registrationOverlay = true"
+            >Провести сканирование</v-btn
+          >
+          <RegistrationPopup
+            v-model="registrationOverlay"
+            @click="closePopup"
+            @onEnter="enterToAuth"
+          />
+          <SocialIcons />
         </div>
-      </a>
-    </div>
+        <a href="#" rel="noopener noreferrer" target="_blank">
+          <div class="flex items-center gap-2">
+            <img class="w-6" src="@/assets/img/icon-warning.svg" />
+            <p class="text-[--grey] hover:opacity-80">
+              Предупреждение об ответственности
+            </p>
+          </div>
+        </a>
+      </div>
 
-    <div class="relative mt-16 z-[-1] glob-block">
-      <img src="@/assets/img/glob.svg" class="w-full" />
-      <GlobImage class="absolute -top-20 left-0 glob-lines" />
-      <div class="absolute -top-20 left-0 glob-lines">
-        <div class="w-[4px] h-[4px] rounded-full bg-[#ffffff90] dot"></div>
-        <div
-          class="w-[4px] h-[4px] rounded-full bg-[#ffffff] top-[132px] pulse left-[92px]"
-        ></div>
+      <div class="relative mt-16 z-[-1] glob-block left-28">
+        <img src="@/assets/img/glob.svg" class="w-full" />
+        <GlobImage class="absolute -top-20 glob-lines" />
       </div>
     </div>
-  </div>
 
-  <div class="h-[80px] flex items-center justify-between">
-    <div class="text-[--grey]">Geo Privacy, 2023</div>
-    <div class="text-[--grey] flex gap-8">
-      <a href="#" rel="noopener noreferrer" target="_blank"
-        >Предупреждение об ответственности</a
-      >
-      <a href="#" rel="noopener noreferrer" target="_blank">Карта сайта</a>
-      <a href="#" rel="noopener noreferrer" target="_blank"
-        >Вход и регистрация</a
-      >
+    <div class="h-[70px] flex items-center justify-between">
+      <div class="text-[--grey]">Geo Privacy, 2023</div>
+      <div class="flex gap-8">
+        <a href="#" rel="noopener noreferrer" target="_blank"
+          ><p class="text-[--grey] hover:opacity-80">
+            Предупреждение об ответственности
+          </p></a
+        >
+        <a href="#" rel="noopener noreferrer" target="_blank"
+          ><p class="text-[--grey] hover:opacity-80">Карта сайта</p>
+        </a>
+        <a href="#" rel="noopener noreferrer" target="_blank">
+          <p class="text-[--grey] hover:opacity-80">Вход и регистрация</p>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -144,7 +143,6 @@ const log = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .dashed {
   color: white;
   border-bottom: 1px dashed white;
@@ -192,6 +190,7 @@ const log = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
+}
 
 .glob-block {
   --block-width: 675px;
@@ -200,46 +199,5 @@ const log = () => {
   .glob-lines {
     width: 95%;
   }
-}
-
-.dot {
-  top: 124px;
-  left: 90px;
-  animation: linear 5s orbita infinite;
-}
-
-@keyframes orbita {
-  0% {
-  }
-  25% {
-    top: 136px;
-    left: 100px;
-  }
-  50% {
-  }
-  75% {
-    top: 144px;
-    left: 82px;
-  }
-  100% {
-  }
-}
-
-@keyframes smooth {
-  0% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.9;
-    scale: 1.6;
-  }
-  100% {
-    opacity: 0.1;
-  }
-}
-
-.pulse {
-  animation: linear smooth 2s infinite;
-
 }
 </style>

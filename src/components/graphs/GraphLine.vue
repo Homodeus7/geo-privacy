@@ -3,6 +3,7 @@
     <Line :data="data" :options="options" class="h-[450px] bg-[#1E1F23]" />
   </div>
 </template>
+
 <script lang="ts" setup>
 import { Line } from "vue-chartjs";
 import {
@@ -29,27 +30,37 @@ ChartJS.register(
 // const points
 
 const data = {
-  labels: ["qwe", "ipsu", "lorem", "sdf", "jan", "feb"],
+  labels: [
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "76",
+    "355",
+    "6783",
+    "6783",
+    "6783",
+  ],
   datasets: [
     {
       label: "Архитектура домена",
-      backgroundColor: "#0D8E38",
-      borderColor: "#0D8E38",
-      color: "#0D8E38",
-      data: [123, 123, 234, 456, 567, 600],
+      backgroundColor: "rgb(224, 148, 35)",
+      borderColor: "rgb(224, 148, 35, 0.5)",
+      data: [5.5, 6, 6.3, 7.5, 8, 8.2, 9.2, 8.4, 7.5, 6.5, 5.8],
     },
     {
       label: "Архитектура домена",
-      backgroundColor: "#C74B24",
-      borderColor: "#C74B24",
-      color: "#C74B24",
-      data: [96, 134, 256, 420, 670, 690],
+      backgroundColor: "rgb(35, 160, 77)",
+      borderColor: "rgb(35, 160, 77, 0.5)",
+      data: [3, 3.4, 3, 3.6, 4, 3.2, 2, 2.2, 2, 0, 1.2],
     },
   ],
 };
 
 const options = {
   responsive: true,
-  maintainAspectRatio: false,
+  maintainAspectRatio: true,
 };
 </script>
