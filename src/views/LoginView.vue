@@ -65,8 +65,8 @@
       </div>
 
       <div class="relative mt-16 z-[-1] glob-block left-28">
-        <img src="@/assets/img/glob.svg" class="w-full" />
-        <GlobImage class="absolute -top-20 glob-lines" />
+        <GlobeTexture class="absolute w-[80%] left-6 -top-5" />
+        <GlobLines class="absolute -top-20 glob-lines" />
       </div>
     </div>
 
@@ -76,8 +76,8 @@
         <a href="#" rel="noopener noreferrer" target="_blank"
           ><p class="text-[--grey] hover:opacity-80">
             Предупреждение об ответственности
-          </p></a
-        >
+          </p>
+        </a>
         <a href="#" rel="noopener noreferrer" target="_blank"
           ><p class="text-[--grey] hover:opacity-80">Карта сайта</p>
         </a>
@@ -90,13 +90,14 @@
 </template>
 
 <script setup>
+import GlobLines from "@/components/base/GlobLines.vue";
+import GlobeTexture from "@/components/base/GlobeTexture.vue";
 import SocialIcons from "@/components/base/SocialIcons.vue";
 import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import { useRouter } from "vue-router";
 import { useLoginForm } from "@/use/login-form";
 import { ref, computed } from "vue";
-import GlobImage from "@/components/base/GlobImage.vue";
 
 const router = useRouter();
 
