@@ -53,9 +53,9 @@
         </a>
       </div>
 
-      <div class="relative mt-16 z-[-1] glob-block left-28">
-        <GlobeTexture class="absolute w-[80%] left-6 -top-5" />
-        <GlobLines class="absolute w-[95%] -top-20" />
+      <div class="relative mt-6 z-[-1] glob-block left-36">
+        <GlobeTexture class="absolute w-[82%] left-6 -top-5" />
+        <GlobLines class="absolute w-[97%] -top-20" />
       </div>
     </div>
 
