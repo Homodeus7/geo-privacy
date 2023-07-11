@@ -16,7 +16,7 @@
       <div class="flex flex-col items-start gap-[15px]">
         <div class="font-medium text-[20px] text">Обычный текстовый попап</div>
         <div class="overflow-auto max-h-[470px] pr-6">
-          <p clas="font-medium text-[--grey]">
+          <p class="font-medium text-[--grey]">
             Гироскопический прибор устойчив. Параметр Родинга-Гамильтона
             позволяет исключить из рассмотрения уходящий центр подвеса,
             основываясь на ограничениях, наложенных на систему. Ротор требует

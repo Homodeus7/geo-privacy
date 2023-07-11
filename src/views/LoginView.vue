@@ -55,7 +55,7 @@
 
       <div class="relative mt-16 z-[-1] glob-block left-28">
         <GlobeTexture class="absolute w-[80%] left-6 -top-5" />
-        <GlobLines class="absolute -top-20 glob-lines" />
+        <GlobLines class="absolute w-[95%] -top-20" />
       </div>
     </div>
 
@@ -185,8 +185,5 @@ const enterToRegistration = () => {
   --block-width: 675px;
   width: 100%;
   max-width: var(--block-width);
-  .glob-lines {
-    width: 95%;
-  }
 }
 </style>
