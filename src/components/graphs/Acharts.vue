@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import RatingCard from "@/components/base/RatingCard.vue";
 
 const rating = RatingCard;
@@ -83,7 +83,7 @@ const chartOptions = reactive({
   },
   stroke: {
     curve: "smooth",
-    width: "2",
+    width: "1",
   },
   fill: {
     type: "gradient",
@@ -103,6 +103,7 @@ const chartOptions = reactive({
       height: "8px",
     },
   },
+
   // tooltip: {
   //   shared: false,
   //   custom: function ({ seriesIndex, dataPointIndex, w }) {
@@ -134,6 +135,18 @@ const chartOptions = reactive({
     },
     onItemHover: {
       highlightDataSeries: false,
+    },
+    tooltipConfig: {
+      locked: false,
+      title: "",
+      elements: [
+        {
+          markerColor: "",
+          label: "",
+          value: "",
+          link: "",
+        },
+      ],
     },
   },
 
@@ -210,7 +223,7 @@ const chartOptions = reactive({
           "#23A04D",
           "#23A04D",
           "#23A04D",
-          "#E09423",
+          "#23A04D",
           "#E09423",
           "#E09423",
           "#E09423",
@@ -245,7 +258,6 @@ const chartOptions = reactive({
     },
     tooltip: {
       enabled: false,
-      offsetX: 0,
     },
   },
   grid: {
