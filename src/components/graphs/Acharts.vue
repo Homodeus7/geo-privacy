@@ -99,12 +99,45 @@ const chartOptions = reactive({
     offsetX: 17,
     offsetY: 15,
     markers: {
-      width: 8,
-      height: 8,
+      width: "8px",
+      height: "8px",
     },
   },
+  // tooltip: {
+  //   shared: false,
+  //   custom: function ({ seriesIndex, dataPointIndex, w }) {
+  //     var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+  //     return (
+  //       '<div class="arrow_box">' +
+  //       '<span class="arrow_box_title">' +
+  //       cves.value.map((i) => i.title)[0] +
+  //       "</span>" +
+  //       '<span class="arrow_box_date">' +
+  //       dates.value.map((i) => i.title)[0] +
+  //       "</span>" +
+  //       "<span class='apexcharts-tooltip-marker' style=background-color:" +
+  //       w.globals.markers.colors[dataPointIndex] +
+  //       "></span>" +
+  //       '<span class="arrow_categories_name">' +
+  //       chartOptions.xaxis.categories[dataPointIndex] +
+  //       "</span>" +
+  //       "</div>"
+  //     );
+  //   },
+  // },
+
+  tooltip: {
+    shared: false,
+    style: {
+      fontSize: "16px",
+      fontWeight: "medium",
+    },
+    onItemHover: {
+      highlightDataSeries: false,
+    },
+  },
+
   xaxis: {
-    type: "numbers",
     categories: [
       "21 TCP",
       "22 TCP",
@@ -129,10 +162,17 @@ const chartOptions = reactive({
       "6783 TCP",
       "6783 TCP",
     ],
-  },
-  yaxis: {
-    lines: {
-      show: false,
+    labels: {
+      show: true,
+      minHeight: undefined,
+      maxHeight: 120,
+      style: {
+        colors: "#ffffff",
+        fontSize: "12px",
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 500,
+        cssClass: "apexcharts-xaxis-label",
+      },
     },
     axisBorder: {
       show: false,
@@ -140,44 +180,90 @@ const chartOptions = reactive({
     axisTicks: {
       show: false,
     },
-  },
-  grid: {
-    borderColor: "#1e1f23",
-    strokeDashArray: 1,
-    opacity: 0,
-  },
-  tooltip: {
-    shared: false,
-    custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-      return (
-        '<div class="arrow_box">' +
-        '<span class="arrow_box_title">' +
-        cves.value.map((i) => i.title)[0] +
-        "</span>" +
-        '<span class="arrow_box_date">' +
-        dates.value.map((i) => i.title)[0] +
-        "</span>" +
-        "<span>" +
-        Math.floor(series[seriesIndex][dataPointIndex] / 2) +
-        "</span>" +
-        "</div>"
-      );
+    tooltip: {
+      enabled: false,
+    },
+    crosshairs: {
+      show: true,
+      position: "back",
+      stroke: {
+        color: "#23A04D",
+        width: 1,
+        dashArray: 0,
+      },
     },
   },
-  // tooltip: {
-  //   shared: false,
-  //   style: {
-  //     fontSize: "16px",
-  //     fontWeight: "medium",
-  //   },
-  //   onItemHover: {
-  //     highlightDataSeries: false,
-  //   },
-  // },
+  yaxis: {
+    show: true,
+    showAlways: false,
+    showForNullSeries: true,
+    seriesName: undefined,
+    logBase: 10,
+    tickAmount: 10,
+    labels: {
+      show: true,
+      align: "center",
+      minWidth: 0,
+      maxWidth: 140,
+      style: {
+        colors: [
+          "#23A04D",
+          "#23A04D",
+          "#23A04D",
+          "#E09423",
+          "#E09423",
+          "#E09423",
+          "#E09423",
+          "#E09423",
+          "#E02A23",
+          "#E02A23",
+          "#E02A23",
+        ],
+        fontSize: "12px",
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 500,
+        cssClass: "apexcharts-yaxis-label",
+      },
+    },
+    axisBorder: {
+      show: false,
+      color: "#78909C",
+      offsetX: 0,
+      offsetY: 0,
+    },
+    axisTicks: {
+      show: false,
+    },
+    crosshairs: {
+      show: true,
+      position: "back",
+      stroke: {
+        color: "#ffffff",
+        width: 1,
+        dashArray: 0,
+      },
+    },
+    tooltip: {
+      enabled: false,
+      offsetX: 0,
+    },
+  },
+  grid: {
+    show: false,
+  },
 });
 </script>
 
 <style lang="scss">
+#chart .block-marker {
+  width: 300px !important;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: centers;
+}
+.custom-marker {
+  width: 30px;
+}
 .arrow_box {
   display: flex;
   flex-direction: column;
@@ -191,7 +277,11 @@ const chartOptions = reactive({
 }
 
 .arrow_box_date {
-  font-size: 10;
+  font-size: 12;
+  font-weight: bold;
+}
+.arrow_categories_name {
+  font-size: 12;
   font-weight: 500;
 }
 #chart .apexcharts-tooltip {
@@ -206,6 +296,11 @@ const chartOptions = reactive({
   border: none;
   background-color: #26282d;
 }
+#chart .apexcharts-tooltip-marker {
+  height: 8px;
+  width: 8px;
+}
+
 #chart .apexcharts-tooltip span {
   color: white;
   font-size: 12px;
@@ -237,9 +332,6 @@ const chartOptions = reactive({
   display: flex;
   gap: 5px;
   align-items: center;
-}
-#chart .apexcharts-xaxis-tick {
-  stroke: none;
 }
 #chart .apexcharts-toolbar {
   display: none;
