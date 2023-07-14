@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full bg-[--black-middle] rounded-md">
+  <div class="relative w-full bg-[--black-middle] rounded-md pt-4">
     <div class="z-10">
       <apexchart
         id="chart"
@@ -15,14 +15,29 @@
       class="absolute h-[480px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
       src="@/assets/img/pattern-graph.svg"
     />
+    <div class="absolute top-3 left-14 flex flex-col">
+      <div class="flex gap-3 items-center">
+        <RatingCard :rating="2" />
+        <p class="text-[12px] font-medium">от 0 до 3.0</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <RatingCard :rating="3" />
+        <p class="text-[12px] font-medium">от 4.0 до 7.0</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <RatingCard :rating="5" />
+        <p class="text-[12px] font-medium">от 8.0 до 10.0</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import CustomChartTooltip from "./CustomChartTooltip.vue";
 import { reactive, ref, computed } from "vue";
 import RatingCard from "@/components/base/RatingCard.vue";
 
-const rating = RatingCard;
+const tooltip = ref();
 
 const cves = ref([
   { title: "CVE-2021-44228" },
@@ -39,7 +54,7 @@ const dates = ref([
 const series = reactive([
   {
     name: "от 0 до 3.0",
-    data: [2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4, 2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4],
+    data: [2, 0, 1, 2, 3, 5, 4, 3, 5, 4, 4, 2, 1, 0, 2, 3, 5, 4, 3, 5, 4, 4],
   },
   {
     name: "от 4.0 до 7.0",
@@ -49,20 +64,111 @@ const series = reactive([
   },
   {
     name: "от 8.0 до 10.0",
-    data: [
-      6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 10, 6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 10,
-    ],
+    data: [6, 7, 8, 9, 8, 9, 7, 9, 8, 9, 9, 6, 7, 8, 9, 8, 9, 7, 10, 8, 9, 9],
   },
 ]);
+
+const returnRatingLayout = (rating) => {
+  switch (rating) {
+    case 0:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 1:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--green]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 2:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--green]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--green]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 3:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 3:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 4:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--yellow-plus]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+    case 5:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--red]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--red]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--red]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--red]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--red]"></div>' +
+        "</div>"
+      );
+
+    default:
+      return (
+        '<div class="rating">' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[red]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        '<div class="w-[6px] h-[6px] rounded-full bg-[--grey]"></div>' +
+        "</div>"
+      );
+  }
+};
 
 const chartOptions = reactive({
   chart: {
     type: "area",
     height: 420,
     stacked: false,
+    toolbar: {
+      show: false,
+    },
+    zoom: {
+      enabled: false,
+    },
   },
   markers: {
     size: 0,
+    strokeColors: "transparent",
   },
   animations: {
     enabled: true,
@@ -94,6 +200,7 @@ const chartOptions = reactive({
     },
   },
   legend: {
+    show: false,
     position: "top",
     horizontalAlign: "left",
     offsetX: 17,
@@ -103,53 +210,30 @@ const chartOptions = reactive({
       height: "8px",
     },
   },
-
-  // tooltip: {
-  //   shared: false,
-  //   custom: function ({ seriesIndex, dataPointIndex, w }) {
-  //     var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
-  //     return (
-  //       '<div class="arrow_box">' +
-  //       '<span class="arrow_box_title">' +
-  //       cves.value.map((i) => i.title)[0] +
-  //       "</span>" +
-  //       '<span class="arrow_box_date">' +
-  //       dates.value.map((i) => i.title)[0] +
-  //       "</span>" +
-  //       "<span class='apexcharts-tooltip-marker' style=background-color:" +
-  //       w.globals.markers.colors[dataPointIndex] +
-  //       "></span>" +
-  //       '<span class="arrow_categories_name">' +
-  //       chartOptions.xaxis.categories[dataPointIndex] +
-  //       "</span>" +
-  //       "</div>"
-  //     );
-  //   },
-  // },
-
   tooltip: {
     shared: false,
-    style: {
-      fontSize: "16px",
-      fontWeight: "medium",
-    },
-    onItemHover: {
-      highlightDataSeries: false,
-    },
-    tooltipConfig: {
-      locked: false,
-      title: "",
-      elements: [
-        {
-          markerColor: "",
-          label: "",
-          value: "",
-          link: "",
-        },
-      ],
+    custom: function ({ seriesIndex, dataPointIndex, w }) {
+      var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+      return (
+        '<div class="arrow_box">' +
+        '<span class="arrow_box_title">' +
+        cves.value.map((i) => i.title)[0] +
+        "</span>" +
+        '<span class="arrow_box_date">' +
+        dates.value.map((i) => i.title)[0] +
+        "</span>" +
+        "<div class='self-center'>" +
+        returnRatingLayout(Math.ceil(data / 2)) +
+        "</div>" +
+        '<span class="arrow_categories_name flex gap-1 justify-center">' +
+        chartOptions.xaxis.categories[dataPointIndex] +
+        "<img class='w-5' src='/public/img/icon-danger.svg'></img>" +
+        "<img class='w-5' src='/public/img/icon-exploit-br.svg'></img>" +
+        "</span>" +
+        "</div>"
+      );
     },
   },
-
   xaxis: {
     categories: [
       "21 TCP",
@@ -230,6 +314,7 @@ const chartOptions = reactive({
           "#E09423",
           "#E02A23",
           "#E02A23",
+
           "#E02A23",
         ],
         fontSize: "12px",
@@ -267,6 +352,14 @@ const chartOptions = reactive({
 </script>
 
 <style lang="scss">
+.rating {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+.card {
+  background: green;
+}
 #chart .block-marker {
   width: 300px !important;
   display: flex !important;
@@ -287,7 +380,6 @@ const chartOptions = reactive({
   font-size: 16px !important;
   font-weight: 500;
 }
-
 .arrow_box_date {
   font-size: 12;
   font-weight: bold;
@@ -312,23 +404,19 @@ const chartOptions = reactive({
   height: 8px;
   width: 8px;
 }
-
 #chart .apexcharts-tooltip span {
   color: white;
   font-size: 12px;
   align-items: center;
   justify-content: space-between;
 }
-
 #chart .apexcharts-tooltip-series-group {
   padding-left: 20px;
 }
-
 #chart .apexcharts-menu {
   border: none;
   background-color: #26282d;
 }
-
 #chart .apexcharts-menu-item:hover {
   background-color: rgb(53, 56, 59, 0.8);
 }
@@ -339,13 +427,9 @@ const chartOptions = reactive({
   color: white !important;
   font-weight: bold !important;
 }
-
 #chart .apexcharts-legend-series {
   display: flex;
   gap: 5px;
   align-items: center;
-}
-#chart .apexcharts-toolbar {
-  display: none;
 }
 </style>
