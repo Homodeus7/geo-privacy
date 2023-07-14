@@ -12,7 +12,7 @@
       </apexchart>
     </div>
     <img
-      class="absolute h-[480px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
+      class="absolute h-[520px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
       src="@/assets/img/pattern-graph.svg"
     />
     <div class="absolute top-3 left-14 flex flex-col">
