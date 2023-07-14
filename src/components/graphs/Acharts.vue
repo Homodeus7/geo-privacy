@@ -15,29 +15,17 @@
       class="absolute h-[520px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
       src="@/assets/img/pattern-graph.svg"
     />
-    <div class="absolute top-3 left-14 flex flex-col">
-      <div class="flex gap-3 items-center">
-        <RatingCard :rating="2" />
-        <p class="text-[12px] font-medium">от 0 до 3.0</p>
-      </div>
-      <div class="flex gap-3 items-center">
-        <RatingCard :rating="3" />
-        <p class="text-[12px] font-medium">от 4.0 до 7.0</p>
-      </div>
-      <div class="flex gap-3 items-center">
-        <RatingCard :rating="5" />
-        <p class="text-[12px] font-medium">от 8.0 до 10.0</p>
-      </div>
+    <div class="absolute top-[22px] left-14 flex flex-col gap-[12px] z-[0]">
+      <RatingCard :rating="2" />
+      <RatingCard :rating="3" />
+      <RatingCard :rating="5" />
     </div>
   </div>
 </template>
 
 <script setup>
-import CustomChartTooltip from "./CustomChartTooltip.vue";
-import { reactive, ref, computed } from "vue";
+import { reactive, ref } from "vue";
 import RatingCard from "@/components/base/RatingCard.vue";
-
-const tooltip = ref();
 
 const cves = ref([
   { title: "CVE-2021-44228" },
@@ -200,14 +188,14 @@ const chartOptions = reactive({
     },
   },
   legend: {
-    show: false,
+    show: true,
     position: "top",
     horizontalAlign: "left",
-    offsetX: 17,
-    offsetY: 15,
+    offsetX: 0,
+    offsetY: 0,
     markers: {
-      width: "8px",
-      height: "8px",
+      width: "0",
+      height: "0",
     },
   },
   tooltip: {
@@ -227,8 +215,8 @@ const chartOptions = reactive({
         "</div>" +
         '<span class="arrow_categories_name flex gap-1 justify-center">' +
         chartOptions.xaxis.categories[dataPointIndex] +
-        "<img class='w-5' src='/public/img/icon-danger.svg'></img>" +
-        "<img class='w-5' src='/public/img/icon-exploit-br.svg'></img>" +
+        "<img class='w-5' src='/img/icon-danger.svg'></img>" +
+        "<img class='w-5' src='/img/icon-exploit-br.svg'></img>" +
         "</span>" +
         "</div>"
       );
@@ -422,6 +410,7 @@ const chartOptions = reactive({
 }
 #chart .apexcharts-legend {
   flex-direction: column;
+  padding-left: 90px;
 }
 #chart .apexcharts-legend-text {
   color: white !important;
