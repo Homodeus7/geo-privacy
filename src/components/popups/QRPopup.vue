@@ -99,5 +99,6 @@ const clickOnButton = () => {
 .btn-text {
   font-size: 14px;
   font-weight: 400;
+  letter-spacing: normal;
 }
 </style>

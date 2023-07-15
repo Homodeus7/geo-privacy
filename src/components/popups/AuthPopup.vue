@@ -137,4 +137,10 @@ const enterAnotherPopup = () => {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.field input::placeholder {
+  opacity: 1;
+  color: var(--grey);
+  font-size: 14px;
+}
+</style>
