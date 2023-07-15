@@ -15,10 +15,10 @@
         theme="dark"
         variant="underlined"
         placeholder="192.168.255.255"
-        class="min-w-[190px] pt-8 text"
+        class="max-w-[190px] text"
       ></v-text-field>
       <div
-        class="flex item-center gap-2 mb-5 px-4 py-[10px] border-[1px] border-[--green]"
+        class="flex item-center gap-2 mb-5 px-2 py-[10px] border-[1px] border-[--green] max-w-[190px]"
       >
         <v-btn
           theme="dark"
@@ -28,7 +28,7 @@
           color="#1d2926"
           @click="active = !active"
         ></v-btn>
-        <p class="lowercase font-medium">расширенный скан</p>
+        <p class="lowercase font-medium text-[14px] pt-1">расширенный скан</p>
       </div>
       <v-expand-transition>
         <div v-if="active" class="flex flex-col gap-4 pb-[16px]">
@@ -37,53 +37,53 @@
             theme="dark"
             density="compact"
             variant="solo"
-            label="Домен"
+            placeholder="Домен"
             hide-details="auto"
-            class="min-w-[190px]"
+            class="max-w-[190px] field-scanning"
           ></v-text-field>
           <v-text-field
             bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
-            label="IP"
+            placeholder="IP"
             hide-details="auto"
-            class="min-w-[190px]"
+            class="max-w-[190px] field-scanning"
           ></v-text-field>
           <v-text-field
             bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
-            label="Ссылка"
+            placeholder="Ссылка"
             hide-details="auto"
-            class="min-w-[190px]"
+            class="max-w-[190px] field-scanning"
           ></v-text-field>
           <v-text-field
             bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
-            label="Логин"
+            placeholder="Логин"
             hide-details="auto"
-            class="min-w-[190px]"
+            class="max-w-[190px] field-scanning"
           ></v-text-field>
           <v-text-field
             bg-color="#27282D"
             theme="dark"
             density="compact"
             variant="solo"
-            label="Пароль"
+            placeholder="Пароль"
             hide-details="auto"
-            class="min-w-[190px]"
+            class="max-w-[190px] field-scanning pb-1"
           ></v-text-field>
         </div>
       </v-expand-transition>
       <v-btn
         theme="dark"
-        size="large"
         rounded="0"
-        class="text-none z-10"
+        width="190"
+        class="text-none z-10 btn-text"
         color="#23A04D"
         >Начать сканирование</v-btn
       >
@@ -108,5 +108,17 @@ const clickOnButton = () => {
   opacity: 1;
   font-size: 20px;
   text-align: center;
+}
+
+.field-scanning input::placeholder {
+  color: var(--grey);
+  opacity: 1;
+  font-size: 14px;
+  text-align: center;
+}
+.btn-text {
+  font-size: 14px;
+  letter-spacing: normal;
+  font-weight: 400;
 }
 </style>
