@@ -56,7 +56,7 @@
         size="large"
         height="50"
         rounded="sx"
-        class="text-none z-10 w-full button-qr"
+        class="text-none z-10 w-full btn-text"
         color="#C74B24"
         @click="login"
         >Завершить регистрацию
@@ -93,10 +93,11 @@ const clickOnButton = () => {
 .text-qr input::placeholder {
   opacity: 1;
   color: var(--grey);
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
 }
-.button-qr {
-  font-size: 16px;
+.btn-text {
+  font-size: 14px;
+  font-weight: 400;
 }
 </style>

@@ -21,9 +21,9 @@
           bg-color="#27282D"
           density="compact"
           variant="solo"
-          label="Email адрес"
+          placeholder="Email адрес"
           hide-details="auto"
-          class="w-full text-green field"
+          class="w-full field"
         ></v-text-field>
         <div
           class="py-1 w-full text-subtitle-1 text-medium-emphasis d-flex align-center justify-end"
@@ -46,9 +46,9 @@
           :type="visible ? 'text' : 'password'"
           density="compact"
           variant="solo"
-          label="Пароль"
+          placeholder="Пароль"
           hide-details="auto"
-          class="w-full text-green pb-[15px]"
+          class="w-full pb-[15px] field"
           @click:append-inner="visible = !visible"
         ></v-text-field>
         <p class="text-[#828282] text-[14px] leading-[17px] text-center">
@@ -76,7 +76,7 @@
         size="large"
         height="40"
         rounded="sx"
-        class="text-none z-10 w-full"
+        class="text-none z-10 w-full btn-text"
         color="#23A04D"
         @click="login"
         >Войти
