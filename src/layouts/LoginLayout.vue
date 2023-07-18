@@ -1,6 +1,6 @@
 <template>
   <div
-    class="2xl:max-w-[1380px] max-w-[1280px] mx-auto max-h-[100%] flex flex-col"
+    class="max-w-[1180px] mx-auto"
   >
     <RouterView />
   </div>
