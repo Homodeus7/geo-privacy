@@ -2,7 +2,7 @@
   <header>
     <nav class="bg-[--black-middle] border-b-[1px] border-[#3B3C3F]">
       <div
-        class="2xl:max-w-[1380px] max-w-[1280px] mx-auto h-[60px] flex items-center justify-between"
+        class="max-w-[1180px] mx-auto h-[60px] flex items-center justify-between"
       >
         <div>
           <div class="flex gap-[10px]">

@@ -8,12 +8,12 @@
         'active-tumb': tumbler.active,
         'inactive-tumb': !tumbler.active,
       }"
-      height="49"
+      height="40"
       padding-left="0"
       padding-right="0"
       @click="tumbler.active = !tumbler.active"
       >{{ tumbler.name }}: {{ tumbler.value }}
-      <div class="w-[21px]">
+      <div class="w-[20px]">
         <img
           class="pl-2 pt-1"
           v-if="tumbler.active"
@@ -41,7 +41,7 @@ const tumblers = reactive([
 
 <style lang="scss">
 .tumb .v-btn__content {
-  font-size: 12px;
+  font-size: 11px;
   @media (min-width: 1568px) {
     font-size: 14px;
   }

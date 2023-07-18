@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between items-start gap-3 2xl:flex-row">
+  <div class="flex flex-col justify-between items-start gap-3 text-[14px]">
     <pre>
 inline Var DirectGetItem(__in uint32 index)
 {

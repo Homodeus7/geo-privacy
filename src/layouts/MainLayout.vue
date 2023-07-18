@@ -1,7 +1,7 @@
 <template>
   <HeaderView />
   <div
-    class="2xl:max-w-[1380px] max-w-[1280px] mx-auto min-h-[100vh] flex flex-col gap-10 py-14 flex-auto"
+    class="max-w-[1180px] mx-auto min-h-[100vh] flex flex-col gap-10 py-14 flex-auto"
   >
     <RouterView />
   </div>

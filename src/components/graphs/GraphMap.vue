@@ -33,12 +33,12 @@ import { onMounted, ref } from "vue";
 import CustomNode from "./CustomNode.vue";
 
 const X_1 = 30;
-const X_2 = 340;
+const X_2 = 310;
 const X_3 = X_2 * 1.8;
 const X_4 = X_2 * 2.5;
 const X_5 = X_2 * 3.3;
 
-const Y_1 = 300;
+const Y_1 = 260;
 const STEP_Y = 70;
 
 const Y_2 = Y_1 - STEP_Y;
