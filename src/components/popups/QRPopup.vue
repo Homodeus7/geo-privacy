@@ -8,7 +8,7 @@
           icon="mdi-plus"
           class="rotate-45 z-10"
           color="#E02A23"
-          @click="clickOnButton"
+          @click="closePopup"
         ></v-btn>
       </div>
       <div class="flex flex-col items-center gap-[15px] pb-[16px]">
@@ -52,6 +52,8 @@
         ></v-text-field>
       </div>
       <v-btn
+        :loading="loading"
+        :disabled="!isValid"
         theme="dark"
         size="large"
         height="50"
@@ -60,6 +62,9 @@
         color="#C74B24"
         @click="login"
         >Завершить регистрацию
+        <template>
+          <v-progress-linear indeterminate></v-progress-linear>
+        </template>
       </v-btn>
     </div>
   </v-overlay>
@@ -71,7 +76,7 @@ import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
 const router = useRouter();
-const isLoading = ref(false);
+const loading = ref(false);
 const valid = { ...useValidationFields() };
 
 const isValid = computed(
@@ -79,13 +84,17 @@ const isValid = computed(
 );
 
 const login = () => {
-  router.push("/");
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    router.push("/home");
+  }, 2000);
 };
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(["closeQr"]);
 
-const clickOnButton = () => {
-  emit("click");
+const closePopup = () => {
+  emit("closeQr");
 };
 </script>
 

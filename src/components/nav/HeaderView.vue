@@ -6,16 +6,12 @@
       >
         <div>
           <div class="flex gap-[10px]">
-            <img class="w-[26px]" src="@/assets/logo.svg" />
+            <a href="#">
+              <img class="w-[26px]" src="@/assets/logo.svg" />
+            </a>
             <p class="font-bold">GeoPrivacy</p>
           </div>
         </div>
-        <!-- <div
-          class="w-[284px] h-[37px] flex items-center justify-between px-4 rounded bg-[--black-darken]"
-        >
-          <p class="font-medium text-[--grey]">Искомый домен</p>
-          <img src="@/assets/img/icon-search.svg" />
-        </div> -->
         <div
           class="w-[284px] flex items-center justify-between rounded bg-[--black-darken]"
         >
@@ -40,10 +36,13 @@
         >
           {{ link.name }}
         </router-link>
-        <div class="flex gap-[10px]">
-          <img class="w-[26px]" src="@/assets/img/icon-account.svg" />
-          <p class="font-semibold text-[--grey]">Личный аккаунт</p>
-        </div>
+
+        <a href="#">
+          <div class="flex gap-[10px]">
+            <img class="w-[26px]" src="@/assets/img/icon-account.svg" />
+            <p class="font-semibold text-[--grey]">Личный аккаунт</p>
+          </div>
+        </a>
       </div>
     </nav>
   </header>
@@ -54,8 +53,8 @@ import { RouterLink } from "vue-router";
 import { reactive } from "vue";
 
 const links = reactive([
-  { link: "/login", name: "Позицианирование проекта" },
-  { link: "/", name: "Профили доменов" },
+  { link: "/", name: "Авторизация" },
+  { link: "/home", name: "Профили доменов" },
   { link: "/location", name: "Обзор локации" },
 ]);
 </script>
@@ -63,6 +62,7 @@ const links = reactive([
 <style lang="scss" scoped>
 .link:hover {
   color: #fff;
+  stroke: #fff;
 }
 .active {
   color: #fff;

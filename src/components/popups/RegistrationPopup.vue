@@ -84,6 +84,8 @@
         </div>
       </div>
       <v-btn
+        :loading="loading"
+        :disabled="!isValid || terms === false"
         theme="dark"
         size="large"
         height="40"
@@ -92,6 +94,9 @@
         color="#C74B24"
         @click="login"
         >Создать аккаунт
+        <template>
+          <v-progress-linear indeterminate></v-progress-linear>
+        </template>
       </v-btn>
       <div class="flex items-center justify-between pt-10">
         <div class="border-t-[1px] border-[--grey] w-full"></div>
@@ -102,7 +107,7 @@
         </div>
         <div class="border-t-[1px] border-[--grey] w-full"></div>
       </div>
-      <SocialIcons />
+      <SocialIcons @openToQr="enterQrPopup" />
       <p class="text-center">
         У вас есть аккаунт?
         <span
@@ -123,25 +128,10 @@ import { useRouter } from "vue-router";
 import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
-const router = useRouter();
 const visible = ref(false);
 const terms = ref(false);
-const isLoading = ref(false);
+const loading = ref(false);
 const valid = { ...useValidationFields() };
-
-const isValid = computed(
-  () =>
-    !!valid.email.value &&
-    !!valid.password.value &&
-    !valid.eError.value &&
-    !valid.pError.value
-);
-
-const login = () => {
-  router.push("/");
-};
-
-const emit = defineEmits(["click", "enter"]);
 
 const clickOnButton = () => {
   emit("click");
@@ -150,6 +140,28 @@ const clickOnButton = () => {
 const enterAnotherPopup = () => {
   emit("onEnter");
 };
+
+const enterQrPopup = () => {
+  emit("onQrPopup");
+};
+
+const login = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    emit("onQrSuccess");
+  }, 1000);
+};
+
+const emit = defineEmits(["click", "onEnter", "onQrPopup", "onQrSuccess"]);
+
+const isValid = computed(
+  () =>
+    !!valid.email.value &&
+    !!valid.password.value &&
+    !valid.eError.value &&
+    !valid.pError.value
+);
 </script>
 
 <style lang="scss"></style>

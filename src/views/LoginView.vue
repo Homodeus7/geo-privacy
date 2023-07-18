@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between h-[100vh]">
+  <div class="flex flex-col justify-between h-[100vh] min-width-[100vw]">
     <div class="pt-[40px] flex gap-12 justify-end items-center">
       <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
         <p class="dashed">Вход</p>
@@ -52,8 +52,7 @@
           </div>
         </a>
       </div>
-
-      <div class="relative mt-6 z-[-1] glob-block left-28">
+      <div class="relative mt-10 z-[-1] glob-block left-28">
         <GlobeTexture class="absolute w-[82%] left-6 -top-5" />
         <GlobLines class="absolute w-[97%] -top-20" />
       </div>
@@ -80,14 +79,18 @@
     v-model="registrationOverlay"
     @click="closePopup"
     @onEnter="enterToAuth"
+    @onQrPopup="regToSocial"
+    @onQrSuccess="regToSuccsess"
   />
   <AuthPopup
     v-model="authOverlay"
     @click="closeAuthPopup"
     @onEnter="enterToRegistration"
+    @onQrPopup="authToSocial"
   />
-  <QRPopup v-model="qrOverlay" @click="closeQRPopup" />
+  <QRPopup v-model="qrOverlay" @closeQr="closeQRPopup" />
   <TextPopup v-model="textPopup" @click="closeTextPopup" />
+  <SuccessPopup v-model="successPopup" @click="closeSuccessPopup" />
 </template>
 
 <script setup>
@@ -98,12 +101,14 @@ import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import QRPopup from "@/components/popups/QRPopup.vue";
 import TextPopup from "@/components/popups/TextPopup.vue";
+import SuccessPopup from "@/components/popups/SuccessPopup.vue";
 import { ref } from "vue";
 
 const qrOverlay = ref(false);
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
 const textPopup = ref(false);
+const successPopup = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
@@ -121,6 +126,10 @@ const closeTextPopup = () => {
   textPopup.value = false;
 };
 
+const closeSuccessPopup = () => {
+  successPopup.value = false;
+};
+
 const enterToAuth = () => {
   registrationOverlay.value = false;
   authOverlay.value = true;
@@ -128,6 +137,19 @@ const enterToAuth = () => {
 const enterToRegistration = () => {
   authOverlay.value = false;
   registrationOverlay.value = true;
+};
+
+const regToSocial = () => {
+  registrationOverlay.value = false;
+  qrOverlay.value = true;
+};
+const authToSocial = () => {
+  authOverlay.value = false;
+  qrOverlay.value = true;
+};
+const regToSuccsess = () => {
+  registrationOverlay.value = false;
+  successPopup.value = true;
 };
 </script>
 

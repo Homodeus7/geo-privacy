@@ -71,16 +71,23 @@
           Google.
         </p>
       </div>
-      <v-btn
-        theme="dark"
-        size="large"
-        height="40"
-        rounded="sx"
-        class="text-none z-10 w-full btn-text"
-        color="#23A04D"
-        @click="login"
-        >Войти
-      </v-btn>
+      <div class="text-center">
+        <v-btn
+          :loading="loading"
+          :disabled="!isValid"
+          theme="dark"
+          size="large"
+          height="40"
+          rounded="sx"
+          class="text-none z-10 w-full btn-text"
+          color="#23A04D"
+          @click="login"
+          >Войти
+          <template>
+            <v-progress-linear indeterminate></v-progress-linear>
+          </template>
+        </v-btn>
+      </div>
       <div class="flex items-center justify-between pt-10">
         <div class="border-t-[1px] border-[--grey] w-full"></div>
         <div
@@ -90,7 +97,7 @@
         </div>
         <div class="border-t-[1px] border-[--grey] w-full"></div>
       </div>
-      <SocialIcons />
+      <SocialIcons @openToQr="enterQrPopup" />
       <p class="text-center">
         Нет аккаунта?
         <span
@@ -108,12 +115,12 @@
 import SocialIcons from "@/components/base/SocialIcons.vue";
 import { useRouter } from "vue-router";
 import { useValidationFields } from "@/use/validation-fields";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 
 const router = useRouter();
 const visible = ref(false);
 const valid = { ...useValidationFields() };
-
+const loading = ref(false);
 const isValid = computed(
   () =>
     !!valid.email.value &&
@@ -123,10 +130,14 @@ const isValid = computed(
 );
 
 const login = () => {
-  router.push("/");
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    router.push("/home");
+  }, 2000);
 };
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(["click", "onEnter", "onQrPopup"]);
 
 const clickOnButton = () => {
   emit("click");
@@ -134,6 +145,10 @@ const clickOnButton = () => {
 
 const enterAnotherPopup = () => {
   emit("onEnter");
+};
+
+const enterQrPopup = () => {
+  emit("onQrPopup");
 };
 </script>
 
