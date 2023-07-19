@@ -8,7 +8,7 @@
       <div class="flex flex-col justify-between">
         <div class="flex flex-col gap-5 items-center">
           <img :src="item.img" alt="logo" />
-          <p class="font-medium text-xl">{{ item.name }}</p>
+          <p class="font-medium text-base">{{ item.name }}</p>
         </div>
         <v-btn
           class="text-none text-white"
@@ -25,7 +25,7 @@
           class="flex gap-5 items-center"
         >
           <div class="text-[--grey]">{{ value.name }}</div>
-          <div class="font-normal text-xl">{{ value.result }}</div>
+          <div class="font-normal text-base">{{ value.result }}</div>
         </div>
       </div>
     </div>
@@ -90,10 +90,10 @@ const data = reactive([
     img: "/img/icon-hosting.svg",
     values: [
       { name: "Хостинг провайдер", result: "MegaHoster" },
-      { name: "Расположение сервера", result: "Москва" },
-      { name: "Расположение сервера", result: "Москва" },
-      { name: "Расположение сервера", result: "Москва" },
-      { name: "Расположение сервера", result: "Москва" },
+      { name: "Расположение", result: "Москва" },
+      { name: "Расположение", result: "Москва" },
+      { name: "Расположение", result: "Москва" },
+      { name: "Расположение", result: "Москва" },
     ],
     desc: [
       {

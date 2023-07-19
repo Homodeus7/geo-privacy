@@ -34,8 +34,7 @@ const tumblers = reactive([
   { link: "#", name: "Найдено exploit", value: 1, id: 2, active: false },
   { link: "#", name: "Поддомены", value: 1, id: 3, active: false },
   { link: "#", name: "Vhost", value: 1, id: 4, active: false },
-  { link: "#", name: "Связанные IP адреса", value: 1, id: 5, active: false },
-  { link: "#", name: "Связанные URL", value: 1, id: 6, active: false },
+  { link: "#", name: "Связанные IP", value: 1, id: 5, active: false },
 ]);
 </script>
 

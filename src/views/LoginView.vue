@@ -17,7 +17,7 @@
         </v-btn>
       </div>
     </div>
-    <div class="flex h-full">
+    <div class="flex h-full items-center">
       <div class="flex flex-col gap-[30px] max-w-[640px] pt-[50px] relative">
         <img class="absolute -left-8 top-7" src="@/assets/img/pattern.svg" />
         <h1 class="font-medium text-[42px] leading-[48px]">
@@ -52,9 +52,9 @@
           </div>
         </a>
       </div>
-      <div class="relative z-[-1] glob-block overflow-hidden">
-        <GlobeTexture class="absolute w-[82%] left-20 -top-14" />
-        <GlobLines class="absolute w-[97%] -top-32 left-16" />
+      <div class="relative z-[-1] glob-block h-full overflow-hidden">
+        <GlobeTexture class="absolute w-[82%] left-20 top-4 right-0" />
+        <GlobLines class="absolute w-[97%] left-14 -top-12 right-0" />
       </div>
     </div>
 
@@ -154,7 +154,6 @@ const regToSuccsess = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
   display: grid;
   grid-template-rows: min-content 1fr min-content;
