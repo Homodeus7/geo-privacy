@@ -17,44 +17,48 @@
         </v-btn>
       </div>
     </div>
-    <div class="flex h-full items-center">
-      <div class="flex flex-col gap-[30px] max-w-[640px] pt-[50px] relative">
-        <img class="absolute -left-8 top-7" src="@/assets/img/pattern.svg" />
-        <h1 class="font-medium text-[42px] leading-[48px]">
-          Инновационная технология глубокого изучения геоданных
-        </h1>
-        <p class="font-normal text-[18px] leading-[28px]">
-          Теоретические и методические основы разработки и внедрения инноваций
-          GIS- технологий при визуализации и геопространственном моделировании
-          базы данных объектов недвижимости
-        </p>
-        <div class="flex flex-col gap-[20px] max-w-[230px]">
-          <v-btn
-            theme="dark"
-            height="40"
-            rounded="xs"
-            class="text-none z-10"
-            color="#C74B24"
-            @click="registrationOverlay = true"
-            >Провести сканирование</v-btn
-          >
-          <SocialIcons
-            @openToQr="qrOverlay = true"
-            @openToText="textPopup = true"
-          />
-        </div>
-        <a href="#" rel="noopener noreferrer" target="_blank">
-          <div class="flex items-center gap-2">
-            <img class="w-6" src="@/assets/img/icon-warning.svg" />
-            <p class="text-[--grey] hover:opacity-80">
-              Предупреждение об ответственности
-            </p>
+
+    <div class="flex items-center">
+      <div class="flex items-center h-full">
+        <div class="flex flex-col gap-[40px] relative py-10">
+          <img class="absolute -left-8 top-12" src="@/assets/img/pattern.svg" />
+          <h1 class="font-medium text-[48px] leading-[58px]">
+            Инновационная технология глубокого изучения геоданных
+          </h1>
+          <p class="font-normal text-[20px] leading-[28px]">
+            Теоретические и методические основы разработки и внедрения инноваций
+            GIS- технологий при визуализации и геопространственном моделировании
+            базы данных объектов недвижимости
+          </p>
+          <div class="flex flex-col gap-[40px] max-w-[258px]">
+            <v-btn
+              theme="dark"
+              height="52"
+              rounded="xs"
+              class="text-none z-10"
+              color="#C74B24"
+              @click="registrationOverlay = true"
+              >Провести сканирование</v-btn
+            >
+            <SocialIcons
+              @openToQr="qrOverlay = true"
+              @openToText="textPopup = true"
+            />
           </div>
-        </a>
-      </div>
-      <div class="relative z-[-1] glob-block h-full overflow-hidden">
-        <GlobeTexture class="absolute w-[82%] left-20 top-4 right-0" />
-        <GlobLines class="absolute w-[97%] left-14 -top-12 right-0" />
+          <a href="#" rel="noopener noreferrer" target="_blank">
+            <div class="flex items-center gap-2">
+              <img class="w-6" src="@/assets/img/icon-warning.svg" />
+              <p class="text-[--grey] hover:opacity-80">
+                Предупреждение об ответственности
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="relative z-[-1] w-full h-full left-14 overflow-hidden">
+          <GlobeTexture class="absolute w-[85%] -top-8 left-14" />
+          <GlobLines class="absolute w-[100%] -top-24 left-8" />
+        </div>
       </div>
     </div>
 
@@ -206,11 +210,5 @@ const regToSuccsess = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
-}
-
-.glob-block {
-  --block-width: 675px;
-  width: 100%;
-  max-width: var(--block-width);
 }
 </style>
