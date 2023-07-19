@@ -124,7 +124,6 @@
 
 <script setup>
 import SocialIcons from "../base/SocialIcons.vue";
-import { useRouter } from "vue-router";
 import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
@@ -163,5 +162,3 @@ const isValid = computed(
     !valid.pError.value
 );
 </script>
-
-<style lang="scss"></style>

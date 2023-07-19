@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="pt-[30px] flex gap-12 justify-end items-center">
+  <div class="flex flex-col justify-between h-[100vh]">
+    <div class="pt-[40px] flex gap-12 justify-end items-center">
       <div @click="authOverlay = true" class="hover:opacity-80 cursor-pointer">
         <p class="dashed">Вход</p>
       </div>
@@ -9,56 +9,61 @@
         <v-btn
           variant="outlined"
           rounded="xl"
-          width="140"
-          height="50"
+          width="158"
+          height="55"
           class="text-none border-none text-white"
           @click="registrationOverlay = true"
           >Регистрация
         </v-btn>
       </div>
     </div>
-    <div class="flex h-full">
-      <div class="flex flex-col gap-[30px] max-w-[640px] pt-[50px] relative">
-        <img class="absolute -left-8 top-7" src="@/assets/img/pattern.svg" />
-        <h1 class="font-medium text-[42px] leading-[48px]">
-          Инновационная технология глубокого изучения геоданных
-        </h1>
-        <p class="font-normal text-[18px] leading-[28px]">
-          Теоретические и методические основы разработки и внедрения инноваций
-          GIS- технологий при визуализации и геопространственном моделировании
-          базы данных объектов недвижимости
-        </p>
-        <div class="flex flex-col gap-[20px] max-w-[230px]">
-          <v-btn
-            theme="dark"
-            height="40"
-            rounded="xs"
-            class="text-none z-10"
-            color="#C74B24"
-            @click="registrationOverlay = true"
-            >Провести сканирование</v-btn
-          >
-          <SocialIcons
-            @openToQr="qrOverlay = true"
-            @openToText="textPopup = true"
-          />
-        </div>
-        <a href="#" rel="noopener noreferrer" target="_blank">
-          <div class="flex items-center gap-2">
-            <img class="w-6" src="@/assets/img/icon-warning.svg" />
-            <p class="text-[--grey] hover:opacity-80">
-              Предупреждение об ответственности
-            </p>
+
+    <div class="flex items-center">
+      <div class="flex items-center h-full">
+        <div class="flex flex-col gap-[30px] relative">
+          <img class="absolute -left-8 -top-4" src="@/assets/img/pattern.svg" />
+          <h1 class="font-medium text-[40px] leading-[50px]">
+            Инновационная технология глубокого изучения геоданных
+          </h1>
+          <p class="font-normal max-w-[450px] pb-[20px]">
+            Теоретические и методические основы разработки и внедрения инноваций
+            GIS- технологий при визуализации и геопространственном моделировании
+            базы данных объектов недвижимости
+          </p>
+          <div class="flex flex-col gap-[30px] max-w-[240px]">
+            <v-btn
+              theme="dark"
+              height="45"
+              size="small"
+              rounded="xs"
+              class="text-none z-10"
+              color="#C74B24"
+              @click="registrationOverlay = true"
+              >Провести сканирование</v-btn
+            >
+            <SocialIcons
+              @openToQr="qrOverlay = true"
+              @openToText="textPopup = true"
+            />
           </div>
-        </a>
-      </div>
-      <div class="relative z-[-1] glob-block overflow-hidden">
-        <GlobeTexture class="absolute w-[82%] left-20 -top-14" />
-        <GlobLines class="absolute w-[97%] -top-32 left-16" />
+          <a href="#" rel="noopener noreferrer" target="_blank">
+            <div class="flex items-center gap-2">
+              <img class="w-6" src="@/assets/img/icon-warning.svg" />
+              <p class="text-[--grey] hover:opacity-80">
+                Предупреждение об ответственности
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="relative z-[-1] w-full h-full left-10 overflow-hidden">
+          <GlobeTexture class="absolute w-[78%] -top-16 left-6" />
+          <GlobLines class="absolute w-[93%] -left-0 -top-[142px]" />
+        </div>
       </div>
     </div>
 
-    <div class="h-[60px] flex items-center justify-between">
+    <div class="h-[70px] flex items-center justify-between">
       <div class="text-[--grey]">Geo Privacy, 2023</div>
       <div class="flex gap-8">
         <a href="#" rel="noopener noreferrer" target="_blank"
@@ -79,18 +84,14 @@
     v-model="registrationOverlay"
     @click="closePopup"
     @onEnter="enterToAuth"
-    @onQrPopup="regToSocial"
-    @onQrSuccess="regToSuccsess"
   />
   <AuthPopup
     v-model="authOverlay"
     @click="closeAuthPopup"
     @onEnter="enterToRegistration"
-    @onQrPopup="authToSocial"
   />
-  <QRPopup v-model="qrOverlay" @closeQr="closeQRPopup" />
+  <QRPopup v-model="qrOverlay" @click="closeQRPopup" />
   <TextPopup v-model="textPopup" @click="closeTextPopup" />
-  <SuccessPopup v-model="successPopup" @click="closeSuccessPopup" />
 </template>
 
 <script setup>
@@ -101,14 +102,12 @@ import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import QRPopup from "@/components/popups/QRPopup.vue";
 import TextPopup from "@/components/popups/TextPopup.vue";
-import SuccessPopup from "@/components/popups/SuccessPopup.vue";
 import { ref } from "vue";
 
 const qrOverlay = ref(false);
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
 const textPopup = ref(false);
-const successPopup = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
@@ -126,10 +125,6 @@ const closeTextPopup = () => {
   textPopup.value = false;
 };
 
-const closeSuccessPopup = () => {
-  successPopup.value = false;
-};
-
 const enterToAuth = () => {
   registrationOverlay.value = false;
   authOverlay.value = true;
@@ -138,34 +133,15 @@ const enterToRegistration = () => {
   authOverlay.value = false;
   registrationOverlay.value = true;
 };
-
-const regToSocial = () => {
-  registrationOverlay.value = false;
-  qrOverlay.value = true;
-};
-const authToSocial = () => {
-  authOverlay.value = false;
-  qrOverlay.value = true;
-};
-const regToSuccsess = () => {
-  registrationOverlay.value = false;
-  successPopup.value = true;
-};
 </script>
 
 <style lang="scss" scoped>
-
-.container {
-  display: grid;
-  grid-template-rows: min-content 1fr min-content;
-  height: 100vh;
-}
 .dashed {
   color: white;
   border-bottom: 1px dashed white;
 }
 .border-gradient {
-  --border-width: 1px;
+  --border-width: 2px;
   --border-radius: 30px;
   --color-1: #e09423;
   --color-2: #e3562a;
@@ -174,7 +150,7 @@ const regToSuccsess = () => {
 .border-gradient {
   background: linear-gradient(to right, #e09423, #e3562a),
     linear-gradient(to right, #e09423, #e3562a);
-  background-position: 26px 0, 26px 101%;
+  background-position: 26px 0, 26px 100%;
   background-repeat: no-repeat;
   background-size: calc(
       100% - var(--border-radius) - var(--border-radius) + 6px
@@ -207,11 +183,5 @@ const regToSuccsess = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
-}
-
-.glob-block {
-  --block-width: 675px;
-  width: 100%;
-  max-width: var(--block-width);
 }
 </style>
