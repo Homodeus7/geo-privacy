@@ -14,7 +14,7 @@ inline Var DirectGetItem(__in uint32 index)
 }</pre
     >
     <div
-      class="text-white bg-[#27282D] px-3 py-1 order-[-1] 2xl:order-1 self-end 2xl:self-start"
+      class="text-white bg-[#27282D] px-3 py-1 order-[-1] 2xl:order-1 self-end"
     >
       {{ props.language }}
     </div>

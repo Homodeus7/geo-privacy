@@ -144,7 +144,7 @@ const scanningResults = reactive([
 .border-gradient {
   background: linear-gradient(to right, #e09423, #e3562a),
     linear-gradient(to right, #e09423, #e3562a);
-  background-position: 2px 0, 2px 100%;
+  background-position: 3px -1%, 3px 101%;
   background-repeat: no-repeat;
   background-size: calc(
       100% - var(--border-radius) - var(--border-radius) + 3px
