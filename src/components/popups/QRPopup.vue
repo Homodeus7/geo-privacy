@@ -56,7 +56,7 @@
         :disabled="!isValid"
         theme="dark"
         size="large"
-        height="50"
+        height="40"
         rounded="sx"
         class="text-none z-10 w-full btn-text"
         color="#C74B24"

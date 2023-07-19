@@ -84,15 +84,20 @@
     v-model="registrationOverlay"
     @click="closePopup"
     @onEnter="enterToAuth"
+    @onQrPopup="regToSocial"
+    @onQrSuccess="regToSuccsess"
   />
   <AuthPopup
     v-model="authOverlay"
     @click="closeAuthPopup"
     @onEnter="enterToRegistration"
+    @onQrPopup="authToSocial"
   />
-  <QRPopup v-model="qrOverlay" @click="closeQRPopup" />
+  <QRPopup v-model="qrOverlay" @closeQr="closeQRPopup" />
   <TextPopup v-model="textPopup" @click="closeTextPopup" />
+  <SuccessPopup v-model="successPopup" @click="closeSuccessPopup" />
 </template>
+
 
 <script setup>
 import GlobLines from "@/components/base/GlobLines.vue";
@@ -102,12 +107,14 @@ import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import QRPopup from "@/components/popups/QRPopup.vue";
 import TextPopup from "@/components/popups/TextPopup.vue";
+import SuccessPopup from "@/components/popups/SuccessPopup.vue";
 import { ref } from "vue";
 
 const qrOverlay = ref(false);
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
 const textPopup = ref(false);
+const successPopup = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
@@ -125,6 +132,10 @@ const closeTextPopup = () => {
   textPopup.value = false;
 };
 
+const closeSuccessPopup = () => {
+  successPopup.value = false;
+};
+
 const enterToAuth = () => {
   registrationOverlay.value = false;
   authOverlay.value = true;
@@ -132,6 +143,19 @@ const enterToAuth = () => {
 const enterToRegistration = () => {
   authOverlay.value = false;
   registrationOverlay.value = true;
+};
+
+const regToSocial = () => {
+  registrationOverlay.value = false;
+  qrOverlay.value = true;
+};
+const authToSocial = () => {
+  authOverlay.value = false;
+  qrOverlay.value = true;
+};
+const regToSuccsess = () => {
+  registrationOverlay.value = false;
+  successPopup.value = true;
 };
 </script>
 
@@ -183,5 +207,11 @@ const enterToRegistration = () => {
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   border-left-color: transparent;
+}
+
+.glob-block {
+  --block-width: 675px;
+  width: 100%;
+  max-width: var(--block-width);
 }
 </style>
