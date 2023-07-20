@@ -145,11 +145,13 @@ const enterQrPopup = () => {
 };
 
 const login = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-    emit("onQrSuccess");
-  }, 1000);
+  if (isValid.value) {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+      emit("onQrSuccess");
+    }, 1000);
+  }
 };
 
 const emit = defineEmits(["click", "onEnter", "onQrPopup", "onQrSuccess"]);

@@ -49,6 +49,7 @@
           placeholder="Код из аутентификатора"
           hide-details="auto"
           class="w-full text-qr"
+          @keyup.enter="login"
         ></v-text-field>
       </div>
       <v-btn
@@ -104,10 +105,5 @@ const closePopup = () => {
   color: var(--grey);
   font-size: 14px;
   text-align: center;
-}
-.btn-text {
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: normal;
 }
 </style>

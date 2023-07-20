@@ -15,6 +15,7 @@
         <div class="font-medium text-[20px] text pb-[15px]">Авторизация</div>
 
         <v-text-field
+          dense
           v-model="valid.email.value"
           :error-messages="valid.eError.value"
           theme="dark"
@@ -38,18 +39,20 @@
           >
         </div>
         <v-text-field
+          dense
           v-model="valid.password.value"
           :error-messages="valid.pError.value"
-          theme="dark"
-          bg-color="#27282D"
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           :type="visible ? 'text' : 'password'"
+          @click:append-inner="visible = !visible"
+          @keyup.enter="login"
+          theme="dark"
           density="compact"
+          bg-color="#27282D"
           variant="solo"
           placeholder="Пароль"
           hide-details="auto"
           class="w-full pb-[15px] field"
-          @click:append-inner="visible = !visible"
         ></v-text-field>
         <p class="text-[#828282] text-[14px] leading-[17px] text-center">
           Сайт защищен с помощью reCAPTCHA и вы принимаете
@@ -130,11 +133,13 @@ const isValid = computed(
 );
 
 const login = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-    router.push("/home");
-  }, 2000);
+  if (isValid.value) {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+      router.push("/home");
+    }, 2000);
+  }
 };
 
 const emit = defineEmits(["click", "onEnter", "onQrPopup"]);
@@ -157,5 +162,15 @@ const enterQrPopup = () => {
   opacity: 1;
   color: var(--grey);
   font-size: 14px;
+}
+.btn-text {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+.v-text-field .v-input__control .v-input__slot {
+  min-height: auto !important;
+  display: flex !important;
+  align-items: center !important;
 }
 </style>
