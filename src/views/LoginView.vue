@@ -5,17 +5,16 @@
         <p class="dashed">Вход</p>
       </div>
 
-      <div class="border-gradient">
-        <v-btn
-          variant="outlined"
-          rounded="xl"
-          width="158"
-          height="55"
-          class="text-none border-none text-white"
-          @click="registrationOverlay = true"
-          >Регистрация
-        </v-btn>
-      </div>
+      <v-btn
+        variant="outlined"
+        rounded="xl"
+        width="158"
+        height="47"
+        color="#e09423"
+        class="text-none reg-btn"
+        @click="registrationOverlay = true"
+        >Регистрация
+      </v-btn>
     </div>
 
     <div class="flex items-center">
@@ -98,7 +97,6 @@
   <SuccessPopup v-model="successPopup" @click="closeSuccessPopup" />
 </template>
 
-
 <script setup>
 import GlobLines from "@/components/base/GlobLines.vue";
 import GlobeTexture from "@/components/base/GlobeTexture.vue";
@@ -160,53 +158,12 @@ const regToSuccsess = () => {
 </script>
 
 <style lang="scss" scoped>
+.reg-btn {
+  letter-spacing: 0.025em;
+}
 .dashed {
   color: white;
   border-bottom: 1px dashed white;
-}
-.border-gradient {
-  --border-width: 2px;
-  --border-radius: 30px;
-  --color-1: #e09423;
-  --color-2: #e3562a;
-}
-
-.border-gradient {
-  background: linear-gradient(to right, #e09423, #e3562a),
-    linear-gradient(to right, #e09423, #e3562a);
-  background-position: 26px 0, 26px 100%;
-  background-repeat: no-repeat;
-  background-size: calc(
-      100% - var(--border-radius) - var(--border-radius) + 6px
-    )
-    var(--border-width);
-  border: none;
-}
-
-.border-gradient:before,
-.border-gradient:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: var(--border-radius);
-  top: 0;
-  bottom: 0;
-}
-
-.border-gradient:before {
-  left: 0;
-  border: var(--border-width) solid var(--color-1);
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-  border-right-color: transparent;
-}
-
-.border-gradient:after {
-  right: 0;
-  border: var(--border-width) solid var(--color-2);
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  border-left-color: transparent;
 }
 
 .glob-block {

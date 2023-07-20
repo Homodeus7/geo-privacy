@@ -57,7 +57,7 @@
         :disabled="!isValid"
         theme="dark"
         size="large"
-        height="40"
+        height="47"
         rounded="sx"
         class="text-none z-10 w-full btn-text"
         color="#C74B24"
@@ -105,7 +105,7 @@ const closePopup = () => {
 .text-qr input::placeholder {
   opacity: 1;
   color: var(--grey);
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 </style>

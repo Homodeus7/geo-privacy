@@ -82,6 +82,7 @@
       <v-btn
         theme="dark"
         rounded="0"
+        height="47"
         width="190"
         class="text-none z-10 btn-text"
         color="#23A04D"
@@ -95,6 +96,7 @@
 import { ref } from "vue";
 
 const active = ref(false);
+
 const emit = defineEmits(["click"]);
 
 const clickOnButton = () => {
@@ -113,12 +115,13 @@ const clickOnButton = () => {
 .field-scanning input::placeholder {
   color: var(--grey);
   opacity: 1;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 .btn-text {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: normal;
   font-weight: 400;
+  letter-spacing: normal;
 }
 </style>

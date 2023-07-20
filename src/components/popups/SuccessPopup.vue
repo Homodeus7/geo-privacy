@@ -25,7 +25,7 @@
         :loading="loading"
         theme="dark"
         size="large"
-        height="40"
+        height="47"
         rounded="sx"
         class="text-none z-10 w-full btn-text"
         color="#0066FF"

@@ -15,16 +15,16 @@
         <div class="font-medium text-[20px] text pb-[15px]">Авторизация</div>
 
         <v-text-field
-          dense
           v-model="valid.email.value"
           :error-messages="valid.eError.value"
           theme="dark"
           bg-color="#27282D"
           density="compact"
           variant="solo"
-          placeholder="Email адрес"
+          label="Email адрес"
           hide-details="auto"
           class="w-full field"
+          content-class="elevation-0"
         ></v-text-field>
         <div
           class="py-1 w-full text-subtitle-1 text-medium-emphasis d-flex align-center justify-end"
@@ -50,9 +50,10 @@
           density="compact"
           bg-color="#27282D"
           variant="solo"
-          placeholder="Пароль"
+          label="Пароль"
           hide-details="auto"
           class="w-full pb-[15px] field"
+          content-class="elevation-0"
         ></v-text-field>
         <p class="text-[#828282] text-[14px] leading-[17px] text-center">
           Сайт защищен с помощью reCAPTCHA и вы принимаете
@@ -80,7 +81,7 @@
           :disabled="!isValid"
           theme="dark"
           size="large"
-          height="40"
+          height="47"
           rounded="sx"
           class="text-none z-10 w-full btn-text"
           color="#23A04D"
@@ -158,19 +159,13 @@ const enterQrPopup = () => {
 </script>
 
 <style lang="scss">
-.field input::placeholder {
-  opacity: 1;
+.v-text-field label {
+  font-size: 16px;
   color: var(--grey);
-  font-size: 14px;
 }
 .btn-text {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: normal;
-}
-.v-text-field .v-input__control .v-input__slot {
-  min-height: auto !important;
-  display: flex !important;
-  align-items: center !important;
 }
 </style>
