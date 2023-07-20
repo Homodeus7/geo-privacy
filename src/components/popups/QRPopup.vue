@@ -85,11 +85,13 @@ const isValid = computed(
 );
 
 const login = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-    router.push("/home");
-  }, 2000);
+  if (isValid.value) {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+      router.push("/home");
+    }, 2000);
+  }
 };
 
 const emit = defineEmits(["closeQr"]);

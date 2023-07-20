@@ -5,17 +5,14 @@
         <img class="w-10" src="@/assets/img/icon-scanning.svg" />
         <p class="font-medium text-2xl">Сканирование</p>
       </div>
-      <div class="border-gradient">
-        <v-btn
-          variant="outlined"
-          size="small"
-          height="37"
-          color="#E09423"
-          class="text-none border-none text-white"
-          @click="overlay = !overlay"
-          >Сканировать
-        </v-btn>
-      </div>
+      <v-btn
+        variant="outlined"
+        size="small"
+        height="37"
+        class="text-none scan-btn"
+        @click="overlay = !overlay"
+        >Сканировать
+      </v-btn>
     </div>
     <ScanningPopup v-model="overlay" @click="closePopup" />
     <div
@@ -73,7 +70,7 @@
         variant="outlined"
         height="37"
         width="182"
-        class="text-none text-color"
+        class="text-none watch-btn"
         >Просмотреть результаты
       </v-btn>
     </div>
@@ -127,55 +124,17 @@ const scanningResults = reactive([
 </script>
 
 <style lang="scss" scoped>
-.text-color {
+.watch-btn {
   font-size: 11px;
   font-weight: 400;
   color: white;
   border-color: #23a04d;
 }
 
-.border-gradient {
-  --border-width: 1px;
-  --border-radius: 4px;
-  --color-1: #e09423;
-  --color-2: #e3562a;
-}
-
-.border-gradient {
-  background: linear-gradient(to right, #e09423, #e3562a),
-    linear-gradient(to right, #e09423, #e3562a);
-  background-position: 3px -1%, 3px 101%;
-  background-repeat: no-repeat;
-  background-size: calc(
-      100% - var(--border-radius) - var(--border-radius) + 3px
-    )
-    var(--border-width);
-  border: none;
-}
-
-.border-gradient:before,
-.border-gradient:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: var(--border-radius);
-  top: 0;
-  bottom: 0;
-}
-
-.border-gradient:before {
-  left: 0;
-  border: var(--border-width) solid var(--color-1);
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-  border-right-color: transparent;
-}
-
-.border-gradient:after {
-  right: 0;
-  border: var(--border-width) solid var(--color-2);
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  border-left-color: transparent;
+.scan-btn {
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  border-color: #e09423;
 }
 </style>
