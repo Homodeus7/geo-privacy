@@ -119,14 +119,11 @@
 
 <script setup>
 import SocialIcons from "../base/SocialIcons.vue";
-import { useRouter } from "vue-router";
 import { useValidationFields } from "@/use/validation-fields";
 import { ref, computed } from "vue";
 
-const router = useRouter();
 const visible = ref(false);
 const terms = ref(false);
-const isLoading = ref(false);
 const valid = { ...useValidationFields() };
 
 const isValid = computed(
@@ -138,10 +135,14 @@ const isValid = computed(
 );
 
 const login = () => {
-  router.push("/");
+  if (isValid.value) {
+    setTimeout(() => {
+      emit("onSuccess");
+    }, 1000);
+  }
 };
 
-const emit = defineEmits(["click", "enter"]);
+const emit = defineEmits(["click", "enter", "onSuccess"]);
 
 const clickOnButton = () => {
   emit("click");

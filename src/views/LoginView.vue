@@ -83,6 +83,7 @@
     v-model="registrationOverlay"
     @click="closePopup"
     @onEnter="enterToAuth"
+    @onSuccess="regToSuccsess"
   />
   <AuthPopup
     v-model="authOverlay"
@@ -91,6 +92,7 @@
   />
   <QRPopup v-model="qrOverlay" @click="closeQRPopup" />
   <TextPopup v-model="textPopup" @click="closeTextPopup" />
+  <SuccessPopup v-model="successPopup" @click="closeSuccessPopup" />
 </template>
 
 <script setup>
@@ -101,12 +103,14 @@ import RegistrationPopup from "@/components/popups/RegistrationPopup.vue";
 import AuthPopup from "@/components/popups/AuthPopup.vue";
 import QRPopup from "@/components/popups/QRPopup.vue";
 import TextPopup from "@/components/popups/TextPopup.vue";
+import SuccessPopup from "@/components/popups/SuccessPopup.vue";
 import { ref } from "vue";
 
 const qrOverlay = ref(false);
 const registrationOverlay = ref(false);
 const authOverlay = ref(false);
 const textPopup = ref(false);
+const successPopup = ref(false);
 
 const closePopup = () => {
   registrationOverlay.value = false;
@@ -128,6 +132,16 @@ const enterToAuth = () => {
   registrationOverlay.value = false;
   authOverlay.value = true;
 };
+
+const closeSuccessPopup = () => {
+  successPopup.value = false;
+};
+
+const regToSuccsess = () => {
+  registrationOverlay.value = false;
+  successPopup.value = true;
+};
+
 const enterToRegistration = () => {
   authOverlay.value = false;
   registrationOverlay.value = true;

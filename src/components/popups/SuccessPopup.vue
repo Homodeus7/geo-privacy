@@ -22,7 +22,6 @@
         </div>
       </div>
       <v-btn
-        :loading="loading"
         theme="dark"
         size="large"
         height="40"
@@ -31,9 +30,6 @@
         color="#0066FF"
         @click="login"
         >Вернуться на сайт
-        <template>
-          <v-progress-linear indeterminate></v-progress-linear>
-        </template>
       </v-btn>
     </div>
   </v-overlay>
@@ -42,15 +38,10 @@
 <script setup>
 import { useRouter } from "vue-router";
 
-import { ref } from "vue";
-
 const router = useRouter();
-const loading = ref(false);
 
 const login = () => {
-  loading.value = true;
   setTimeout(() => {
-    loading.value = false;
     router.push("/");
   }, 2000);
 };
