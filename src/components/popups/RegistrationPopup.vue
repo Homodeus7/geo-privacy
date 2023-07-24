@@ -28,16 +28,17 @@
         <v-text-field
           v-model="valid.password.value"
           :error-messages="valid.pError.value"
-          theme="dark"
-          bg-color="#27282D"
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           :type="visible ? 'text' : 'password'"
+          @click:append-inner="visible = !visible"
+          @keyup.enter="login"
+          theme="dark"
+          bg-color="#27282D"
           density="compact"
           variant="solo"
           label="Пароль"
           hide-details="auto"
           class="w-full field"
-          @click:append-inner="visible = !visible"
         ></v-text-field>
         <p class="text-[#828282] text-[12px] leading-[15px]">
           Сайт защищен с помощью reCAPTCHA и вы принимаете
