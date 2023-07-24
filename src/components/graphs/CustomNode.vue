@@ -28,5 +28,6 @@ defineProps({
     </div>
   </div>
 
-  <Handle id="a" type="source" :position="Position.Left" />
+  <Handle id="a" type="target" :position="Position.Left" />
+  <Handle id="b" type="source" :position="Position.Right" />
 </template>
