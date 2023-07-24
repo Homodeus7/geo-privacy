@@ -25,7 +25,7 @@
         :loading="loading"
         theme="dark"
         size="large"
-        height="47"
+        height="40"
         rounded="sx"
         class="text-none z-10 w-full btn-text"
         color="#0066FF"
@@ -51,7 +51,7 @@ const login = () => {
   loading.value = true;
   setTimeout(() => {
     loading.value = false;
-    router.push("/home");
+    router.push("/");
   }, 2000);
 };
 
