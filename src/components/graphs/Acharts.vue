@@ -3,16 +3,16 @@
     <div class="z-10">
       <apexchart
         id="chart"
-        class="mr-[-10px]"
+        class="mr-[10px]"
         type="area"
-        height="420"
+        height="440"
         :options="chartOptions"
         :series="series"
       >
       </apexchart>
     </div>
     <img
-      class="absolute h-[520px] w-[1180px] 2xl:w-[1290px] top-0 left-11 z-0"
+      class="absolute h-[470px] w-[1100px] top-2 left-12 z-0"
       src="@/assets/img/pattern-graph.svg"
     />
     <div class="absolute top-[22px] left-14 flex flex-col gap-[12px] z-[0]">
@@ -145,7 +145,7 @@ const returnRatingLayout = (rating) => {
 const chartOptions = reactive({
   chart: {
     type: "area",
-    height: 420,
+    height: 440,
     stacked: false,
     toolbar: {
       show: false,

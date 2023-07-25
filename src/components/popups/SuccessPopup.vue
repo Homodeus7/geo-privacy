@@ -30,6 +30,7 @@
         class="text-none z-10 w-full btn-text"
         color="#0066FF"
         @click="login"
+        @keyup.enter="login"
         >Вернуться на сайт
         <template>
           <v-progress-linear indeterminate></v-progress-linear>

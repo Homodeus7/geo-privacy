@@ -31,7 +31,6 @@
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           :type="visible ? 'text' : 'password'"
           @click:append-inner="visible = !visible"
-          @keyup.enter="login"
           theme="dark"
           bg-color="#27282D"
           density="compact"
