@@ -61,7 +61,11 @@
         </p>
         <div class="flex">
           <div class="-left-2 -top-3 z-10">
-            <v-checkbox v-model="terms" color="#424242"></v-checkbox>
+            <v-checkbox
+              v-model="terms"
+              @keyup.enter="login"
+              color="#424242"
+            ></v-checkbox>
           </div>
           <p class="text-[#828282] text-[12px] leading-[15px] pl-6">
             Я принимаю условия
@@ -133,6 +137,8 @@ const terms = ref(false);
 const loading = ref(false);
 const valid = { ...useValidationFields() };
 
+const emit = defineEmits(["click", "onEnter", "onQrPopup", "onQrSuccess"]);
+
 const clickOnButton = () => {
   emit("click");
 };
@@ -150,12 +156,10 @@ const login = () => {
     loading.value = true;
     setTimeout(() => {
       loading.value = false;
-      emit("onQrSuccess");
+      emit("onSuccess");
     }, 1000);
   }
 };
-
-const emit = defineEmits(["click", "onEnter", "onQrPopup", "onQrSuccess"]);
 
 const isValid = computed(
   () =>

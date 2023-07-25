@@ -84,7 +84,7 @@
     @click="closePopup"
     @onEnter="enterToAuth"
     @onQrPopup="regToSocial"
-    @onQrSuccess="regToSuccsess"
+    @onSuccess="regToSuccsess"
   />
   <AuthPopup
     v-model="authOverlay"
