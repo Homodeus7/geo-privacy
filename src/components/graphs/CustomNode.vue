@@ -27,6 +27,6 @@ defineProps({
       <div class="font-medium">{{ data.label }}</div>
     </div>
   </div>
-
-  <Handle id="a" type="source" :position="Position.Left" />
+  <Handle id="a" type="target" :position="Position.Left" />
+  <Handle id="a" type="source" :position="Position.Right" />
 </template>

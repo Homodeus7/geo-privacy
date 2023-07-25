@@ -3,21 +3,12 @@
     <div>
       <h2 class="font-medium text-[28px] pb-3">Архитектура домена</h2>
       <div class="flex flex-col gap-2">
-        <div class="flex items-center gap-2">
-          <div class="rounded-full bg-[--yellow] w-[10px] h-[10px]"></div>
-          <p>A запись</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="rounded-full bg-[--yellow-plus] w-[10px] h-[10px]"></div>
-          <p>AAAA запись</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="rounded-full bg-[--blue-lighten] w-[10px] h-[10px]"></div>
-          <p>MX запись</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="rounded-full bg-[--green] w-[10px] h-[10px]"></div>
-          <p>TXT запись</p>
+        <div v-for="record in records" class="flex items-center gap-2">
+          <div
+            :class="record.color"
+            class="rounded-full w-[10px] h-[10px]"
+          ></div>
+          <p>{{ record.name }}</p>
         </div>
       </div>
     </div>
@@ -32,13 +23,20 @@ import { Position, VueFlow, useVueFlow } from "@vue-flow/core";
 import { onMounted, ref } from "vue";
 import CustomNode from "./CustomNode.vue";
 
+const records = ref([
+  { name: "A запись", color: "bg-[--yellow]" },
+  { name: "AAAA запись", color: "bg-[--yellow-plus]" },
+  { name: "MX запись", color: "bg-[--blue-lighten]" },
+  { name: "TXT запись", color: "bg-[--green]" },
+]);
+
 const X_1 = 30;
 const X_2 = 310;
 const X_3 = X_2 * 1.8;
 const X_4 = X_2 * 2.5;
 const X_5 = X_2 * 3.3;
 
-const Y_1 = 260;
+const Y_1 = 275;
 const STEP_Y = 70;
 
 const Y_2 = Y_1 - STEP_Y;

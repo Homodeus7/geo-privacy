@@ -16,9 +16,7 @@
       src="@/assets/img/pattern-graph.svg"
     />
     <div class="absolute top-[22px] left-14 flex flex-col gap-[12px] z-[0]">
-      <RatingCard :rating="2" />
-      <RatingCard :rating="3" />
-      <RatingCard :rating="5" />
+      <RatingCard v-for="rating in [1, 3, 5]" :rating="rating" />
     </div>
   </div>
 </template>
